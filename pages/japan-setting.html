@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本設定 — 赤い桜 設定資料集</title>
+  <style>
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #334155;
+  --code-bg: #0d1117;
+  --nav-bg: #1e293b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ナビゲーションヘッダー */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--accent-hover);
+}
+
+.site-nav .nav-home {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.site-nav .nav-sep {
+  color: var(--border);
+  user-select: none;
+}
+
+.site-nav .nav-current {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+/* メインコンテンツ */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* 見出し */
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin: 2.5rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.8rem 0 0.5rem;
+}
+
+h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.4rem;
+}
+
+/* 段落・リスト */
+p {
+  margin: 0.75rem 0;
+  color: var(--text);
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+th {
+  background: var(--card-bg);
+  color: var(--text);
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+tr:hover td {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* blockquote */
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.25rem 0;
+  padding: 0.6rem 1.25rem;
+  background: var(--card-bg);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+}
+
+blockquote p {
+  margin: 0.3rem 0;
+  color: var(--text-muted);
+}
+
+/* コード */
+code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  font-family: "Consolas", "Fira Code", monospace;
+  font-size: 0.88em;
+  color: #7dd3fc;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+/* リンク */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* 水平線 */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* 強調 */
+strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+em {
+  color: var(--text-muted);
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .content {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .site-nav {
+    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+  }
+}
+
+/* ---- 目次ページ専用 ---- */
+.index-hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.index-hero h1 {
+  font-size: 2rem;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.index-hero .subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  background: #263248;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.card-arrow {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+  <a href="index.html" class="nav-home">赤い桜 — 設定資料集</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">日本設定</span>
+  <span class="nav-sep" style="flex:1"></span>
+  <a href="world-setting.html">世界設定</a><span class="nav-sep"> | </span><a href="federation.html">連邦制度リファレンス</a><span class="nav-sep"> | </span><a href="scenario.html">シナリオ構成</a>
+</nav>
+  <main class="content" id="main-content">
+    <h1>カイザーライヒ 日本帝国 設定資料集</h1>
+<blockquote>
+<p><strong>用途：</strong> 仮想戦記の土台資料。MOD公式設定＋史実からの類推を統合。
+MOD固有の設定には【KR】、史実ベースの類推には【史実類推】と表記。</p>
+</blockquote>
+<hr>
+<h2>目次</h2>
+<ol>
+<li><a href="#1-%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1">基本情報</a></li>
+<li><a href="#2-%E6%94%BF%E6%B2%BB%E4%BD%93%E5%88%B6%E3%81%A8%E6%94%BF%E5%85%9A">政治体制と政党</a></li>
+<li><a href="#3-%E9%99%B8%E8%BB%8D%E6%B4%BE%E9%96%A5--%E7%B6%AD%E6%96%B0%E6%B4%BE%E3%81%A8%E7%B5%B1%E5%88%B6%E6%B4%BE">陸軍派閥 — 維新派と統制派</a></li>
+<li><a href="#4-%E6%B5%B7%E8%BB%8D--%E8%89%A6%E9%9A%8A%E6%B4%BE%E3%81%A8%E6%9D%A1%E7%B4%84%E6%B4%BE">海軍 — 艦隊派と条約派</a></li>
+<li><a href="#5-%E6%B5%B7%E8%BB%8D%E6%88%A6%E5%8A%9B%E3%81%A8%E5%BB%BA%E8%89%A6%E8%A8%88%E7%94%BB">海軍戦力と建艦計画</a></li>
+<li><a href="#6-%E8%B2%A1%E9%96%A5%E3%81%A8%E7%B5%8C%E6%B8%88%E6%A7%8B%E9%80%A0">財閥と経済構造</a></li>
+<li><a href="#7-%E9%A0%98%E5%9C%9F%E3%81%A8%E5%8B%A2%E5%8A%9B%E5%9C%8F">領土と勢力圏</a></li>
+<li><a href="#8-%E5%AF%BE%E5%A4%96%E9%96%A2%E4%BF%82">対外関係</a></li>
+<li><a href="#9-%E4%B8%BB%E8%A6%81%E4%BA%BA%E7%89%A9%E4%B8%80%E8%A6%A7">主要人物一覧</a></li>
+<li><a href="#10-193637%E5%B9%B4%E3%81%AE%E5%88%86%E5%B2%90%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88">1936〜37年の分岐イベント</a></li>
+<li><a href="#11-%E4%BB%AE%E6%83%B3%E6%88%A6%E8%A8%98%E7%94%A8%E3%83%A1%E3%83%A2">仮想戦記用メモ</a></li>
+</ol>
+<hr>
+<h2>1. 基本情報</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>国名</td>
+<td>大日本帝国（Empire of Japan）</td>
+</tr>
+<tr>
+<td>政体</td>
+<td>立憲君主制（1936年時点）</td>
+</tr>
+<tr>
+<td>元首</td>
+<td>昭和天皇（1926年即位）</td>
+</tr>
+<tr>
+<td>首相</td>
+<td>犬養毅（1931〜1936年5月暗殺）</td>
+</tr>
+<tr>
+<td>与党</td>
+<td>立憲政友会</td>
+</tr>
+<tr>
+<td>人口</td>
+<td>約6,500万（内地）</td>
+</tr>
+<tr>
+<td>陣営</td>
+<td>大東亜共栄圏（第四の勢力）</td>
+</tr>
+<tr>
+<td>対独関係</td>
+<td><strong>休戦未締結 — 形式上は交戦状態が継続</strong></td>
+</tr>
+</tbody></table>
+<h3>世界大戦後の経緯 【KR】</h3>
+<ul>
+<li>日本は第一次世界大戦（Weltkrieg）で協商側として参戦・戦勝</li>
+<li>しかしドイツ勝利により、膠州湾・太平洋旧独領の返還を余儀なくされる</li>
+<li>1919年ヴェルサイユ講和会議：英国が日本の領土要求を拒否 → 日本代表団退席</li>
+<li>1921年<strong>青島協定（Tsingtao Accord）</strong>：日独間の限定的和平。日本は青島・ドイツ太平洋領から撤退</li>
+<li>休戦条約（Armistice）には署名せず → <strong>形式的にはドイツと交戦状態が継続</strong></li>
+</ul>
+<hr>
+<h2>2. 政治体制と政党</h2>
+<h3>政党一覧</h3>
+<table>
+<thead>
+<tr>
+<th>政党名</th>
+<th>イデオロギー</th>
+<th>支持基盤</th>
+<th>財閥との関係</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>立憲政友会</strong></td>
+<td>社会保守主義</td>
+<td>地主・財閥・保守層</td>
+<td><strong>三井系</strong></td>
+</tr>
+<tr>
+<td><strong>立憲民政党</strong></td>
+<td>市場自由主義</td>
+<td>都市リベラル層</td>
+<td><strong>三菱系</strong></td>
+</tr>
+<tr>
+<td><strong>社会大衆党</strong></td>
+<td>社会民主主義</td>
+<td>労働者・農民</td>
+<td>なし</td>
+</tr>
+<tr>
+<td><strong>国民同盟</strong></td>
+<td>権威主義的民主</td>
+<td>右派ポピュリスト</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>協和会</td>
+<td>温情的専制</td>
+<td>軍部統制派</td>
+<td>軍需系</td>
+</tr>
+<tr>
+<td>大政翼賛会</td>
+<td>国家主義</td>
+<td>維新派（皇道派）</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3>政友会 【KR】</h3>
+<ul>
+<li>1936年時点の与党。1926年の「憲政復活」以来3回連続で総選挙勝利</li>
+<li>総裁：犬養毅（1936年5月15日暗殺） → 鈴木喜三郎が後継</li>
+<li>三井財閥・地主層が主要支持基盤</li>
+<li>「政友会は三井グループの延長とみなされていた」</li>
+</ul>
+<h3>民政党 【KR】</h3>
+<ul>
+<li>最大野党。浜口雄幸のもとで改革・近代化路線</li>
+<li>三菱財閥・帝国海軍と結びつき</li>
+<li>「民政党は三菱グループ、そして帝国海軍と繋がっていた」</li>
+</ul>
+<h3>社会大衆党 【KR】</h3>
+<ul>
+<li>片山潜が創設（サンディカリスト指導者。暗殺が五・一五事件の引き金）</li>
+<li>労働者・小作農が支持基盤</li>
+<li>1940年選挙候補：安部磯雄、1944年選挙候補：片山哲</li>
+</ul>
+<hr>
+<h2>3. 陸軍派閥 — 維新派と統制派</h2>
+<blockquote>
+<p>KRでは <strong>維新派（Ishinha）= 皇道派、中央派（Chuuha）= 統制派</strong> に対応</p>
+</blockquote>
+<h3>維新派（Ishinha / 皇道派相当）【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>志向</td>
+<td>天皇親政の復活・体制打破</td>
+</tr>
+<tr>
+<td>イデオロギー</td>
+<td>国家主義（National Populist）</td>
+</tr>
+<tr>
+<td>行動様式</td>
+<td>直接行動・クーデターによる「昭和維新」</td>
+</tr>
+<tr>
+<td>政治的帰結</td>
+<td>近衛文麿を首相とする大政翼賛会体制</td>
+</tr>
+<tr>
+<td>支持層</td>
+<td>青年将校・地方出身の中下級士官</td>
+</tr>
+</tbody></table>
+<h4>史実の皇道派主要人物 【史実類推】</h4>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>役職・立場</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>荒木貞夫</td>
+<td>陸軍大将。皇道派の創設者的存在。精神主義を重視</td>
+</tr>
+<tr>
+<td>真崎甚三郎</td>
+<td>教育総監。荒木の盟友。更迭が相沢事件の引き金</td>
+</tr>
+<tr>
+<td>山下奉文</td>
+<td>青年将校に影響力。後のマレー作戦指揮官</td>
+</tr>
+<tr>
+<td>小畑敏四郎</td>
+<td>対ソ戦略の急進派</td>
+</tr>
+</tbody></table>
+<h3>中央派（Chuuha / 統制派相当）【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>志向</td>
+<td>既存体制との協調・官僚的統制</td>
+</tr>
+<tr>
+<td>イデオロギー</td>
+<td>温情的専制（Paternal Autocrat）</td>
+</tr>
+<tr>
+<td>行動様式</td>
+<td>合法的手段 → ただし文民政府が倒れれば軍事クーデター</td>
+</tr>
+<tr>
+<td>政治的帰結</td>
+<td>平沼騏一郎を首相とする協和会体制</td>
+</tr>
+<tr>
+<td>主要人物</td>
+<td>林銑十郎（陸相）、永田鉄山（1943年に林と交代）※KR世界では1935年の相沢事件が回避された前提</td>
+</tr>
+<tr>
+<td>支持層</td>
+<td>軍上層部・官僚機構</td>
+</tr>
+</tbody></table>
+<h4>史実の統制派主要人物 【史実類推】</h4>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>役職・立場</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>永田鉄山</td>
+<td>統制派の理論的指導者。総力戦体制を構想。1935年相沢事件で斬殺（史実）。<strong>KR世界では生存前提</strong>（上表参照）</td>
+</tr>
+<tr>
+<td>東條英機</td>
+<td>永田の後継的存在。官僚的軍国主義の体現者</td>
+</tr>
+<tr>
+<td>武藤章</td>
+<td>軍務局長。統制派の実務家</td>
+</tr>
+<tr>
+<td>鈴木貞一</td>
+<td>企画院。国家総動員体制の設計者</td>
+</tr>
+</tbody></table>
+<h3>両派の根本的違い</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>維新派（皇道派）</th>
+<th>中央派（統制派）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>権力掌握の手段</td>
+<td>直接行動（クーデター）</td>
+<td>体制内浸透・合法的手段</td>
+</tr>
+<tr>
+<td>国家像</td>
+<td>天皇親政・精神主義</td>
+<td>官僚統制・総力戦国家</td>
+</tr>
+<tr>
+<td>対外方針</td>
+<td>即時拡大・対ソ北進論</td>
+<td>計画的段階的拡大</td>
+</tr>
+<tr>
+<td>経済観</td>
+<td>反財閥・農本主義</td>
+<td>財閥との協調・統制経済</td>
+</tr>
+<tr>
+<td>天皇との関係</td>
+<td>「天皇のために」（独善的解釈）</td>
+<td>「天皇の意思を制度で実現」</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. 海軍 — 艦隊派と条約派</h2>
+<blockquote>
+<p>KRでは海軍内部の派閥分裂について詳述がないため、史実をベースに類推する。
+ただしKR世界では<strong>ワシントン海軍軍縮条約が成立していない、または大幅に異なる</strong>ため、
+対立の文脈が変わることに注意。</p>
+</blockquote>
+<h3>艦隊派（Fleet Faction）【史実類推】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主張</td>
+<td>軍縮条約反対・戦力比率の対米7割確保</td>
+</tr>
+<tr>
+<td>戦略思想</td>
+<td><strong>艦隊決戦（Kantai Kessen）</strong> — 大艦巨砲主義</td>
+</tr>
+<tr>
+<td>代表人物</td>
+<td>加藤寛治（軍令部長）、末次信正、高橋三吉</td>
+</tr>
+<tr>
+<td>軍政上の立場</td>
+<td>軍令部（作戦・統帥）側</td>
+</tr>
+<tr>
+<td>政治的傾向</td>
+<td>反英米・強硬的対外姿勢</td>
+</tr>
+</tbody></table>
+<h3>条約派（Treaty Faction）【史実類推】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主張</td>
+<td>国際協調・軍備管理の受容</td>
+</tr>
+<tr>
+<td>戦略思想</td>
+<td>経済力と外交を含めた総合国防</td>
+</tr>
+<tr>
+<td>代表人物</td>
+<td>加藤友三郎（元首相）、山梨勝之進、堀悌吉</td>
+</tr>
+<tr>
+<td>軍政上の立場</td>
+<td>海軍省（行政）側</td>
+</tr>
+<tr>
+<td>政治的傾向</td>
+<td>民政党に近い。三菱との関係</td>
+</tr>
+</tbody></table>
+<h3>KR世界での海軍の特殊事情 【KR + 史実類推】</h3>
+<table>
+<thead>
+<tr>
+<th>要因</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ワシントン条約不成立の可能性</td>
+<td>艦隊派 vs 条約派の対立軸自体が変質。八八艦隊計画が（一部）実現</td>
+</tr>
+<tr>
+<td>主敵がドイツ</td>
+<td>対米比率ではなく<strong>対独東洋艦隊への優位</strong>が焦点</td>
+</tr>
+<tr>
+<td>英国の崩壊</td>
+<td>条約派の根拠だった「英米協調」が消滅 → 条約派の立場が弱体化</td>
+</tr>
+<tr>
+<td>海軍急進派の政治行動</td>
+<td>五・一五事件で海軍将校が犬養首相を暗殺 → 海軍内にも直接行動派がいる</td>
+</tr>
+</tbody></table>
+<h3>海軍のKR世界における想定される派閥構造 【史実類推】</h3>
+<pre><code>  協調派（旧条約派系）          拡大派（旧艦隊派系）          急進派
+  ────────────          ────────────          ────
+  ・国際協調維持             ・八八艦隊の完遂            ・五一五事件の実行者
+  ・民政党・三菱と連携        ・対独戦備の最優先           ・青年将校的直接行動
+  ・漸進的南進論             ・大艦巨砲＋空母の併用        ・陸軍皇道派と共鳴
+  ・外交的解決を優先          ・南洋ドイツ領の武力奪取      ・反体制・反財閥
+
+  代表：山梨勝之進的人物      代表：加藤寛治・末次信正的人物  代表：暗殺実行の海軍将校
+</code></pre>
+<h3>艦隊決戦（Kantai Kessen）ドクトリン 【史実類推】</h3>
+<ul>
+<li><strong>基本構想：</strong> 漸減邀撃作戦 — 敵主力艦隊を潜水艦・航空機・水雷戦隊で漸減し、最終的に戦艦群による決戦で殲滅</li>
+<li><strong>KR世界での適用対象：</strong> 対米ではなく<strong>ドイツ東洋艦隊（シンガポール拠点）</strong></li>
+<li><strong>問題点：</strong> ドイツ東洋艦隊は「帝国海軍最強の海外部隊」であり、本国艦隊の増援も想定される</li>
+</ul>
+<hr>
+<h2>5. 海軍戦力と建艦計画</h2>
+<h3>主要艦艇 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>艦級</th>
+<th>種別</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>長門型</td>
+<td>戦艦</td>
+<td>16インチ砲8門。技術的飛躍を示す</td>
+</tr>
+<tr>
+<td>天城型</td>
+<td>巡洋戦艦</td>
+<td>高速。東南アジア権益の防衛に柔軟対応</td>
+</tr>
+<tr>
+<td>土佐型</td>
+<td>戦艦</td>
+<td>八八艦隊の主力 → 一部は空母に改装</td>
+</tr>
+<tr>
+<td>紀伊型</td>
+<td>戦艦</td>
+<td>1921年青島協定後に威嚇目的で起工。紀伊・尾張が1932年就役</td>
+</tr>
+<tr>
+<td>秋型</td>
+<td>戦艦</td>
+<td>野心的設計だが最終的に計画中止</td>
+</tr>
+<tr>
+<td>神風型</td>
+<td>駆逐艦</td>
+<td>—</td>
+</tr>
+<tr>
+<td>睦月型</td>
+<td>駆逐艦</td>
+<td>—</td>
+</tr>
+<tr>
+<td>空母群</td>
+<td>航空母艦</td>
+<td>土佐型からの改装含む。世界有数の空母運用能力</td>
+</tr>
+</tbody></table>
+<h3>八八艦隊計画の変遷 【KR】</h3>
+<ol>
+<li><strong>Weltkrieg中：</strong> 西洋列強の建艦停滞を突いて海軍力を増強</li>
+<li><strong>1921年：</strong> 青島協定。紀伊型を誇示的に起工</li>
+<li><strong>1925年：</strong> 英国でのサンディカリスト革命を受け、帝国議会が海軍予算を大幅削減<ul>
+<li>「人民の力と、圧倒的海軍の必要性の低下」を議会が認識</li>
+<li>建造中の戦艦を含む複数艦が計画中止（駿河・近江など）</li>
+</ul>
+</li>
+<li><strong>1932年：</strong> 紀伊・尾張が就役。八八艦隊は部分的達成にとどまる</li>
+</ol>
+<h3>海軍の任務 【KR】</h3>
+<ul>
+<li>太平洋通商路の防衛（膨大な駆逐艦隊を船団護衛に充当）</li>
+<li>ドイツ東洋艦隊（シンガポール拠点）への対抗</li>
+<li>南洋方面への戦力投射能力の維持</li>
+</ul>
+<hr>
+<h2>6. 財閥と経済構造</h2>
+<h3>四大財閥 + 新興財閥</h3>
+<table>
+<thead>
+<tr>
+<th>財閥</th>
+<th>主要事業</th>
+<th>政治的立場</th>
+<th>軍との関係</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>三井</strong></td>
+<td>商事・鉱山・銀行</td>
+<td><strong>政友会（保守）</strong></td>
+<td><strong>陸軍</strong>と密接</td>
+</tr>
+<tr>
+<td><strong>三菱</strong></td>
+<td>造船・重工・銀行</td>
+<td><strong>民政党（リベラル）</strong></td>
+<td><strong>海軍</strong>と密接</td>
+</tr>
+<tr>
+<td><strong>住友</strong></td>
+<td>銅山・金属・銀行</td>
+<td>比較的中立</td>
+<td>特定軍閥との強い結びつきは薄い</td>
+</tr>
+<tr>
+<td><strong>安田</strong></td>
+<td>銀行・保険</td>
+<td>比較的中立</td>
+<td>金融面での軍需支援</td>
+</tr>
+<tr>
+<td><strong>日産</strong></td>
+<td>自動車・重工業</td>
+<td>—</td>
+<td><strong>満洲</strong>で急成長（新興財閥）</td>
+</tr>
+<tr>
+<td><strong>川崎</strong></td>
+<td>造船・車両</td>
+<td>—</td>
+<td>海軍向け造船</td>
+</tr>
+<tr>
+<td><strong>トヨタ</strong></td>
+<td>自動車・織機</td>
+<td>—</td>
+<td>新興。軍需転換の可能性</td>
+</tr>
+<tr>
+<td><strong>日立</strong></td>
+<td>電機・機械</td>
+<td>—</td>
+<td>軍需電機</td>
+</tr>
+</tbody></table>
+<h3>三井 — 陸軍 — 政友会 ライン 【KR + 史実類推】</h3>
+<pre><code>三井合名 ──資金──→ 立憲政友会 ──政策──→ 積極財政・大陸進出支持
+  │                                          │
+  └──軍需調達──→ 帝国陸軍 ←──拡大路線──────┘
+</code></pre>
+<ul>
+<li>三井は政友会の最大のスポンサー</li>
+<li>陸軍の大陸進出は三井の商業利権（満洲・中国市場）と一致</li>
+<li>【史実】1932年、三井合名理事長・団琢磨が右翼テロリストに暗殺（血盟団事件）
+→ 財閥と政党の結びつきへの民衆の怒りの表れ</li>
+</ul>
+<h3>三菱 — 海軍 — 民政党 ライン 【KR + 史実類推】</h3>
+<pre><code>三菱財閥 ──資金──→ 立憲民政党 ──政策──→ 国際協調・軍縮・都市発展
+  │                                          │
+  └──艦艇建造──→ 帝国海軍 ←──海軍力整備────┘
+</code></pre>
+<ul>
+<li>三菱重工業（長崎造船所等）が帝国海軍の主要な艦艇建造を受注</li>
+<li>海軍の近代化・技術重視路線と三菱の重工業路線が合致</li>
+<li>民政党は海軍の協調外交路線を支持</li>
+</ul>
+<h3>住友と安田 【史実類推】</h3>
+<ul>
+<li><strong>住友：</strong> 別子銅山に始まる金属・鉱業中心。住友金属工業は軍需にも関わるが、政治的にはMitsui/Mitsubishiほど特定政党に肩入れせず</li>
+<li><strong>安田：</strong> 安田財閥は銀行・保険中心の金融コングロマリット。1921年に安田善次郎が暗殺される。政治的な表立った党派色は薄い</li>
+</ul>
+<h3>満鉄（南満洲鉄道株式会社）【KR】</h3>
+<ul>
+<li>大連に本拠を置く<strong>準財閥的国策会社</strong></li>
+<li>奉天（Fengtian）領内の近代的製造業と大規模農業をほぼ独占</li>
+<li>奉天軍内部に**「親日派」vs「親張派」**の対立を生む</li>
+<li>日本の大陸権益の経済的基盤</li>
+</ul>
+<h3>経済状況（1936年時点）【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>出来事</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1918年</td>
+<td>米騒動</td>
+<td>経済悪化の兆候</td>
+</tr>
+<tr>
+<td>1919年</td>
+<td>フランス陥落（最大貿易相手国の喪失）</td>
+<td>貿易崩壊・産業不振・大量貧困</td>
+</tr>
+<tr>
+<td>1923年</td>
+<td>関東大震災 + アナーキスト蜂起</td>
+<td>壊滅的破壊</td>
+</tr>
+<tr>
+<td>1925年</td>
+<td>英国革命 + ドイツの経済覇権確立</td>
+<td>さらなる打撃</td>
+</tr>
+<tr>
+<td>1927年</td>
+<td>震災手形問題 → 台湾銀行破綻 → 銀行恐慌（昭和金融恐慌）</td>
+<td>金融システム動揺</td>
+</tr>
+<tr>
+<td>1931〜36年</td>
+<td>犬養内閣の介入主義的回復政策</td>
+<td><strong>緩やかな回復</strong>。ただし農村の困窮は継続</td>
+</tr>
+<tr>
+<td>1936年</td>
+<td><strong>Black Monday</strong>（ドイツ発の世界恐慌）</td>
+<td>新たな経済危機の波</td>
+</tr>
+</tbody></table>
+<h3>経済の構造的弱点</h3>
+<ul>
+<li><strong>資源貧国：</strong> 石油・鉄・ゴム等を海外輸入に依存</li>
+<li><strong>太平洋補給線の脆弱性：</strong> ドイツ東洋艦隊が脅威</li>
+<li><strong>農村と都市の格差：</strong> 農村困窮が過激主義の温床</li>
+<li><strong>貿易先の制約：</strong> 旧協商諸国（英仏）の崩壊で市場喪失</li>
+</ul>
+<hr>
+<h2>7. 領土と勢力圏</h2>
+<h3>直轄領土</h3>
+<table>
+<thead>
+<tr>
+<th>領土</th>
+<th>面積概算</th>
+<th>人口概算</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内地（本州・四国・九州・北海道）</td>
+<td>~38万km²</td>
+<td>~6,500万</td>
+<td>核心領土</td>
+</tr>
+<tr>
+<td>朝鮮</td>
+<td>~22万km²</td>
+<td>~2,000万</td>
+<td>同化政策下。大規模駐屯</td>
+</tr>
+<tr>
+<td>台湾（Formosa）</td>
+<td>~3.6万km²</td>
+<td>~500万</td>
+<td>漢人多数＋原住民</td>
+</tr>
+<tr>
+<td>南洋諸島（一部）</td>
+<td>—</td>
+<td>—</td>
+<td>太平洋の島嶼群</td>
+</tr>
+<tr>
+<td>南満洲鉄道附属地</td>
+<td>—</td>
+<td>—</td>
+<td>奉天領内の鉄道沿線</td>
+</tr>
+</tbody></table>
+<h3>占領地 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>領域</th>
+<th>状況</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>北樺太</td>
+<td>ロシア内戦時に占領。ロシアとの緊張の原因</td>
+</tr>
+<tr>
+<td>ウラジオストク周辺</td>
+<td>事実上の支配。沿海州への橋頭保</td>
+</tr>
+</tbody></table>
+<h3>傀儡国家 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>国名</th>
+<th>指導者</th>
+<th>性格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>奉天政府</strong></td>
+<td>張作霖</td>
+<td>日本が唯一の中国正統政府として承認。従属的だが独自の意思もあり</td>
+</tr>
+<tr>
+<td><strong>沿アムール共和国（Transamur）</strong></td>
+<td>コルチャーク提督</td>
+<td>「政治・経済・軍事すべてで日本の支配下」。対ロシア緩衝国</td>
+</tr>
+</tbody></table>
+<h3>拡大目標 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>目標</th>
+<th>現支配者</th>
+<th>魅力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ドイツ領東アジア</strong>（マレー、仏印、サラワク、北ニューギニア、広州湾、青島、太平洋諸島）</td>
+<td>ドイツ帝国</td>
+<td><strong>最大の拡大目標</strong>。シンガポール＝首都、人口約2,900万</td>
+</tr>
+<tr>
+<td>蘭印（オランダ領東インド）</td>
+<td>オランダ</td>
+<td>石油・ゴム・スズの宝庫。数十年にわたる日本の影響力浸透</td>
+</tr>
+<tr>
+<td>フィリピン</td>
+<td>アメリカ（or 独立）</td>
+<td>南方戦略の要。防衛圏の確立</td>
+</tr>
+<tr>
+<td>中国本土（残余）</td>
+<td>各軍閥・清朝復辟</td>
+<td>ドイツ支援の清朝と対立</td>
+</tr>
+<tr>
+<td>モンゴル</td>
+<td>—</td>
+<td>戦略的緩衝地帯</td>
+</tr>
+</tbody></table>
+<h3>大東亜共栄圏 【KR】</h3>
+<ul>
+<li>ゲーム開始時点ですでに第四の主要陣営として形成済み</li>
+<li>軍事・経済・文化の統合体を標榜</li>
+<li>二面性：<strong>汎アジア主義の理想</strong> vs <strong>日本覇権の道具</strong></li>
+<li>Weltkriegでの資源不足の教訓から、自給自足経済圏の構築を志向</li>
+<li>加盟候補：奉天（関係改善時）、沿アムール共和国、その他獲得国</li>
+</ul>
+<hr>
+<h2>8. 対外関係</h2>
+<h3>ドイツ帝国（ライヒスパクト）— 最大の敵対国 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>関係</td>
+<td><strong>敵対的。形式上は交戦状態が継続</strong></td>
+</tr>
+<tr>
+<td>対立の焦点</td>
+<td>太平洋権益、中国での影響力競争</td>
+</tr>
+<tr>
+<td>ドイツの東洋艦隊</td>
+<td>シンガポール拠点。「帝国海軍最強の海外部隊」</td>
+</tr>
+<tr>
+<td>中国問題</td>
+<td>ドイツが1928年上海会議で清朝復辟を支援 → 日本の大陸権益と正面衝突</td>
+</tr>
+<tr>
+<td>青島協定の不満</td>
+<td>日本国民に極めて不人気。都市部で抗議・暴動が発生</td>
+</tr>
+</tbody></table>
+<h3>ロシア — 緊張関係 【KR】</h3>
+<ul>
+<li>日本が北樺太・ウラジオストクを占領中 → ロシアの領土回復要求</li>
+<li>1928年奉天紛争：日本が奉天を支援しロシアに決定的勝利</li>
+<li>沿アムール共和国が日本の対ロ緩衝国</li>
+</ul>
+<h3>亡命協商（カナダ・豪州）— 複雑な関係 【KR】</h3>
+<ul>
+<li>旧英仏の亡命勢力とは<strong>反独で利害が一致</strong>する部分あり</li>
+<li>ただし：<ul>
+<li>ヴェルサイユで英国が日本要求を拒否した経緯 → 不信感</li>
+<li>豪州は太平洋での日本拡大を警戒</li>
+<li>「敵の敵は味方」だが完全信頼には程遠い</li>
+</ul>
+</li>
+</ul>
+<h3>第三インターナショナル — イデオロギー的対立 【KR】</h3>
+<ul>
+<li>サンディカリスム＝日本にとってのイデオロギー的脅威</li>
+<li>1923年にアナーキスト蜂起を鎮圧した経験</li>
+<li>片山潜（社会大衆党創設者、サンディカリスト指導者）の暗殺が五・一五事件の引き金</li>
+<li>国内左派がインターナショナルとの連帯を模索する動きも</li>
+</ul>
+<h3>アメリカ — 地域的競合 【KR】</h3>
+<ul>
+<li>太平洋の競合相手（ただしアメリカ自体が内戦前夜で弱体化）</li>
+<li>アメリカの参戦不在がカイザーライヒ世界の根幹</li>
+</ul>
+<h3>奉天政府 — 最も近い同盟国/傀儡 【KR】</h3>
+<ul>
+<li>日本が唯一承認する中国正統政府</li>
+<li>満鉄が経済を支配 → 奉天軍内に親日派 vs 親張派の対立</li>
+<li>関係が改善すれば共栄圏加盟、悪化すれば<strong>奉天が対日開戦する可能性</strong></li>
+<li>奉天戦争で東北経済はほぼ破産</li>
+</ul>
+<h3>清朝（ドイツ支援）— 敵対的 【KR】</h3>
+<ul>
+<li>ドイツ支援による清朝復辟が日本の大陸権益を脅かす</li>
+<li>1928年上海会議で日本は租界都市での評議会議席を確保</li>
+</ul>
+<hr>
+<h2>9. 主要人物一覧</h2>
+<h3>政治指導者 【KR】</h3>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>役職（1936年時点）</th>
+<th>所属・備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>昭和天皇</td>
+<td>元首</td>
+<td>クーデターの成否を左右する最高権威</td>
+</tr>
+<tr>
+<td>犬養毅</td>
+<td>首相（〜1936.5暗殺）</td>
+<td>政友会総裁。海軍将校により暗殺</td>
+</tr>
+<tr>
+<td>鈴木喜三郎</td>
+<td>治安大臣 → 首相</td>
+<td>国家保安法を提出</td>
+</tr>
+<tr>
+<td>三土忠造</td>
+<td>経済大臣</td>
+<td>—</td>
+</tr>
+<tr>
+<td>吉沢謙吉</td>
+<td>外務大臣</td>
+<td>1940年選挙の政友会候補</td>
+</tr>
+<tr>
+<td>鳩山一郎</td>
+<td>—</td>
+<td>1944年選挙の政友会候補</td>
+</tr>
+<tr>
+<td>浜口雄幸</td>
+<td>民政党改革者</td>
+<td>—</td>
+</tr>
+<tr>
+<td>宇垣一成</td>
+<td>—</td>
+<td>1940年選挙の民政党候補（軍歴あり）</td>
+</tr>
+<tr>
+<td>町田忠治</td>
+<td>—</td>
+<td>1944年選挙の民政党候補</td>
+</tr>
+<tr>
+<td>平沼騏一郎</td>
+<td>枢密院議長</td>
+<td>統制派クーデター後に首相就任。儒教的政治哲学</td>
+</tr>
+<tr>
+<td>近衛文麿</td>
+<td>—</td>
+<td>昭和維新後に首相就任。大政翼賛会を主導</td>
+</tr>
+<tr>
+<td>前田米蔵</td>
+<td>—</td>
+<td>国民同盟党首（1940/1944年）</td>
+</tr>
+<tr>
+<td>安部磯雄</td>
+<td>—</td>
+<td>社会大衆党候補（1940年）</td>
+</tr>
+<tr>
+<td>片山哲</td>
+<td>—</td>
+<td>社会大衆党候補（1944年）</td>
+</tr>
+</tbody></table>
+<h3>軍事指導者 【KR + 史実類推】</h3>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>役職</th>
+<th>派閥</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>林銑十郎</td>
+<td>陸軍大臣</td>
+<td>中央派（統制派）</td>
+<td>文民政府崩壊時にクーデターを実行</td>
+</tr>
+<tr>
+<td>永田鉄山</td>
+<td>軍務局長 → 1943年に林と交代</td>
+<td>中央派（統制派）</td>
+<td>総力戦体制の理論家</td>
+</tr>
+<tr>
+<td>荒木貞夫</td>
+<td>前陸相</td>
+<td>維新派（皇道派）</td>
+<td>精神主義の旗手 【史実類推】</td>
+</tr>
+<tr>
+<td>真崎甚三郎</td>
+<td>前教育総監</td>
+<td>維新派（皇道派）</td>
+<td>更迭が急進派を刺激 【史実類推】</td>
+</tr>
+<tr>
+<td>東條英機</td>
+<td>—</td>
+<td>統制派</td>
+<td>官僚的軍国主義者 【史実類推】</td>
+</tr>
+<tr>
+<td>山本五十六</td>
+<td>—</td>
+<td>海軍・航空主兵論</td>
+<td>対米戦回避論者。航空戦力重視 【史実類推】</td>
+</tr>
+<tr>
+<td>米内光政</td>
+<td>—</td>
+<td>海軍穏健派</td>
+<td>三国同盟反対 【史実類推】</td>
+</tr>
+<tr>
+<td>山口多聞</td>
+<td>—</td>
+<td>海軍・航空派</td>
+<td>空母運用の名手 【史実類推】</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>10. 1936〜37年の分岐イベント</h2>
+<h3>五・一五事件（1936年5月15日）【KR】</h3>
+<ul>
+<li>海軍急進派将校が犬養毅首相を暗殺</li>
+<li>動機：サンディカリスト指導者・片山潜の死への報復</li>
+<li>鈴木喜三郎が後継首相に → <strong>国家保安法</strong>を議会に提出</li>
+</ul>
+<h3>国家保安法の採決 【KR】</h3>
+<p>これが最大の分岐点：</p>
+<pre><code>              国家保安法
+                │
+        ┌───────┴───────┐
+        可決              否決
+        │                │
+  民主制維持ルート     政治危機の深刻化
+  （政友会 or 民政党     │
+   or 社大党の政権）   ┌──┴──┐
+                    中央派      維新派
+                    クーデター    反クーデター
+                    │           │
+                  平沼内閣      昭和維新
+                 （協和会）    （大政翼賛会）
+                               近衛首相
+</code></pre>
+<h3>Black Monday（ドイツ発世界恐慌）【KR】</h3>
+<ul>
+<li>ドイツ経済の崩壊が全世界に波及</li>
+<li>日本の脆弱な経済回復を直撃</li>
+<li>農村困窮の悪化 → 過激主義の燃料</li>
+</ul>
+<hr>
+<h2>11. 仮想戦記用メモ</h2>
+<h3>勢力関係マトリクス</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>陸軍皇道派</th>
+<th>陸軍統制派</th>
+<th>海軍拡大派</th>
+<th>海軍協調派</th>
+<th>政友会</th>
+<th>民政党</th>
+<th>社大党</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>三井</td>
+<td>△敵視される</td>
+<td>○協調</td>
+<td>—</td>
+<td>—</td>
+<td>◎最大後援</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>三菱</td>
+<td>△敵視される</td>
+<td>△</td>
+<td>○造船受注</td>
+<td>◎密接</td>
+<td>×</td>
+<td>◎最大後援</td>
+<td>×</td>
+</tr>
+<tr>
+<td>住友</td>
+<td>△</td>
+<td>△</td>
+<td>△</td>
+<td>△</td>
+<td>△</td>
+<td>△</td>
+<td>×</td>
+</tr>
+<tr>
+<td>安田</td>
+<td>△</td>
+<td>△</td>
+<td>—</td>
+<td>—</td>
+<td>△</td>
+<td>△</td>
+<td>×</td>
+</tr>
+<tr>
+<td>満鉄</td>
+<td>—</td>
+<td>○利害一致</td>
+<td>—</td>
+<td>—</td>
+<td>○</td>
+<td>△</td>
+<td>×</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>◎＝強い結びつき ○＝協力的 △＝中立〜薄い関係 ×＝対立・無関係</p>
+</blockquote>
+<h3>仮想戦記で使えるドラマの種</h3>
+<ol>
+<li><strong>海軍内の空母 vs 戦艦論争</strong> — 八八艦隊を完遂するか、空母機動部隊に転換するか</li>
+<li><strong>財閥テロ</strong> — 三井・三菱の幹部暗殺（史実の団琢磨暗殺、安田善次郎暗殺に相当）</li>
+<li><strong>満鉄利権をめぐる奉天との暗闘</strong> — 張作霖が親日を装いつつ独自路線を探る</li>
+<li><strong>ドイツ東洋艦隊との太平洋冷戦</strong> — シンガポール vs 日本本土の海軍力競争</li>
+<li><strong>Black Mondayの国内衝撃</strong> — 銀行取付騒ぎ、農村一揆、都市労働争議</li>
+<li><strong>五・一五事件の余波</strong> — 海軍急進派の処分をめぐる軍内対立</li>
+<li><strong>天皇の意思</strong> — クーデターを容認するか否か。「聖断」の重み</li>
+<li><strong>サンディカリスム思想の浸透</strong> — 労働者・知識人への浸透 vs 治安維持法</li>
+<li><strong>対独開戦の時期選択</strong> — 欧州で第二次Weltkriegが始まったとき、いつ参戦するか</li>
+<li><strong>アメリカ内戦の影響</strong> — 太平洋の力の真空。漁夫の利を狙えるか</li>
+</ol>
+<hr>
+<h2>出典・参考</h2>
+<h3>KR公式Wiki</h3>
+<ul>
+<li><a href="https://kaiserreich.wiki/Japan">Empire of Japan - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.wiki/Japan/Paths">Empire of Japan/Paths - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.wiki/Imperial_Japanese_Navy">Imperial Japanese Navy - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.wiki/German_East_Asia">German East Asia - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Fengtian_Government">Fengtian Government - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Transamur">Transamur - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Greater_East_Asia_Co-Prosperity_Sphere">Greater East Asia Co-Prosperity Sphere - Kaiserreich Fandom Wiki</a></li>
+</ul>
+<h3>史実参考</h3>
+<ul>
+<li><a href="https://ja.wikipedia.org/wiki/%E8%89%A6%E9%9A%8A%E6%B4%BE">艦隊派 - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Imperial_Way_Faction">Imperial Way Faction - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/T%C5%8Dseiha">Toseiha - Wikipedia</a></li>
+<li><a href="https://liberal-arts-guide.com/big-four-zaibatsu/">四大財閥 - リベラルアーツガイド</a></li>
+</ul>
+<blockquote>
+<p><strong>注意：</strong> KR Wikiには「内容が現行のMOD設定と異なる可能性がある」旨の警告あり。最新MODバージョンで変更されている場合があります。</p>
+</blockquote>
+
+  </main>
+</body>
+</html>

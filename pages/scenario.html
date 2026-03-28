@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>シナリオ構成 — 赤い桜 設定資料集</title>
+  <style>
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #334155;
+  --code-bg: #0d1117;
+  --nav-bg: #1e293b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ナビゲーションヘッダー */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--accent-hover);
+}
+
+.site-nav .nav-home {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.site-nav .nav-sep {
+  color: var(--border);
+  user-select: none;
+}
+
+.site-nav .nav-current {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+/* メインコンテンツ */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* 見出し */
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin: 2.5rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.8rem 0 0.5rem;
+}
+
+h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.4rem;
+}
+
+/* 段落・リスト */
+p {
+  margin: 0.75rem 0;
+  color: var(--text);
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+th {
+  background: var(--card-bg);
+  color: var(--text);
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+tr:hover td {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* blockquote */
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.25rem 0;
+  padding: 0.6rem 1.25rem;
+  background: var(--card-bg);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+}
+
+blockquote p {
+  margin: 0.3rem 0;
+  color: var(--text-muted);
+}
+
+/* コード */
+code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  font-family: "Consolas", "Fira Code", monospace;
+  font-size: 0.88em;
+  color: #7dd3fc;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+/* リンク */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* 水平線 */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* 強調 */
+strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+em {
+  color: var(--text-muted);
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .content {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .site-nav {
+    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+  }
+}
+
+/* ---- 目次ページ専用 ---- */
+.index-hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.index-hero h1 {
+  font-size: 2rem;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.index-hero .subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  background: #263248;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.card-arrow {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+  <a href="index.html" class="nav-home">赤い桜 — 設定資料集</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">シナリオ構成</span>
+  <span class="nav-sep" style="flex:1"></span>
+  <a href="world-setting.html">世界設定</a><span class="nav-sep"> | </span><a href="japan-setting.html">日本設定</a><span class="nav-sep"> | </span><a href="federation.html">連邦制度リファレンス</a>
+</nav>
+  <main class="content" id="main-content">
+    <h1>赤い桜 — シナリオ構成書（改訂版）</h1>
+<blockquote>
+<p><strong>ジャンル：</strong> 仮想戦記 / 架空歴史
+<strong>土台：</strong> カイザーライヒ（ドイツ帝国がWWI勝利した世界）
+<strong>視点：</strong> 日本
+<strong>テーマ：</strong> ボリシェヴィズムの浸透と日本革命
+<strong>設定資料：</strong> <a href="./kaiserreich-japan-setting.md">kaiserreich-japan-setting.md</a>
+<strong>世界設定：</strong> <a href="./kaiserreich-world-setting.md">kaiserreich-world-setting.md</a></p>
+</blockquote>
+<hr>
+<h2>セッション2-6 反映状況</h2>
+<blockquote>
+<p><strong>最終更新:</strong> 2026-03-22（セッション8・15名レビュー反映）
+セッション2-7の全決定事項＋15名レビュー（R1-R8）＋SUGGESTION 17件トリアージ＋Codex指摘6件を統合済み。
+詳細な設定資料は <a href="./kaiserreich-world-setting.md">kaiserreich-world-setting.md</a> を参照。</p>
+<p><strong>セッション6で追加された主要設定（world-setting.md に詳細）:</strong></p>
+<ul>
+<li>正統性の三層構造（革命的自決＋国際承認＋党内神話）— §16</li>
+<li>スターリン：1943年到着（65歳）、パタゴニア遠征経由で消耗 — §16</li>
+<li>人民軍16師団約20万、シンガポール投入約6.5万（3梯団・8週間制限）— §19（15名レビュー修正）</li>
+<li>財閥解体三段階＋工業生産1942年55-60%急落 — §12</li>
+<li>マレー半島民族構成＋蘭印社会構造 — §19</li>
+<li>タイ・ピブーン政権の実態と革命不輸出の核心性 — §19</li>
+<li>呉佩孚1941年死亡→清帝国省別崩壊加速 — §18</li>
+<li>ACA形骸化＋金日成「算数の答えが日本語で書かれている」— §15</li>
+<li>朴と金日成の双方向の試し合い＋朴の不作為 — §17</li>
+</ul>
+</blockquote>
+<hr>
+<h2>改訂のポイント（4人議論フィードバック反映）</h2>
+<ol>
+<li><strong>天皇</strong> — 革命直後に否定 → 国民の猛反発 → ひよって方針転換 → 象徴として憲法で再定義</li>
+<li><strong>山本五十六</strong> — 思想的共鳴ではなく<strong>航空派閥として予算を多くもらえるからボリシェヴィキ側につく</strong>（派閥の論理）</li>
+<li><strong>タイムライン</strong> — WWI後（1919年〜）から構成し、革命までの浸透期間を約20年に拡大</li>
+<li><strong>浸透ルートの人物</strong> — 具体的なキャラクターを1人立てる</li>
+<li><strong>国際的孤立の解消</strong> — 日本を亡命革命家の拠点にし「赤い大東亜共栄圏」を形成。スターリン・毛沢東・金日成らが日本経由で各国を共産化</li>
+</ol>
+<hr>
+<h2>4人議論サマリー（推進派・批判派・読者代弁者・歴史考証官）</h2>
+<blockquote>
+<p><code>/debate</code> スキルで実施。シナリオの強み・弱みを4つの視点から検証した結果。</p>
+</blockquote>
+<h3>全員一致の点</h3>
+<ul>
+<li>沿アムール経由の逆説は面白いが、浸透メカニズムの具体的描写が不足 → <strong>朴永哲の正教会ルートで解決</strong></li>
+<li>山本五十六の鎮圧拒否は「共産主義への同情」ではなく別の動機が必要 → <strong>航空派閥の予算論理で解決</strong></li>
+<li>天皇の処遇がシナリオ全体の成否を決める最重要未決定事項 → <strong>否定→反発→象徴化の三幕で解決</strong></li>
+<li>アイヌ参加には「仲介者」の人物描写が必須 → <strong>二風谷カネト（オリジナル）で解決</strong></li>
+</ul>
+<h3>意見が分かれた点と対処</h3>
+<table>
+<thead>
+<tr>
+<th>論点</th>
+<th>推進派</th>
+<th>批判派</th>
+<th>読者代弁者</th>
+<th>考証官</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7年間の革命速度</td>
+<td>阻害要因を積めば成立</td>
+<td>偶然の連鎖に見える</td>
+<td>密度高すぎ</td>
+<td><strong>致命的に速い</strong></td>
+<td><strong>→ 1919年開始に前倒し、20年間に拡大</strong></td>
+</tr>
+<tr>
+<td>サンディカリスム vs コミュニズム</td>
+<td>農村にはボリシェヴィズム向き</td>
+<td>コミンテルン弱体化のはず</td>
+<td>感情的納得が欲しい</td>
+<td>アナルコサンジカリズムの方が自然</td>
+<td><strong>→ 1923年蜂起失敗を分岐点に設定、朴が4つの理由を作中で議論</strong></td>
+</tr>
+<tr>
+<td>三菱=海軍ライン崩壊</td>
+<td>航空vs大艦巨砲で説明可</td>
+<td>経済的経路が未構築</td>
+<td>世代対立+予算削減</td>
+<td>描けば成立</td>
+<td><strong>→ Black Monday→予算削減→航空派の造反として構成</strong></td>
+</tr>
+<tr>
+<td>国際的孤立</td>
+<td>左派内冷戦が創作的資産</td>
+<td>島国で全方位孤立は非現実的</td>
+<td>連帯の芽が必要</td>
+<td>経済的に生存不可能</td>
+<td><strong>→ 赤い共栄圏で解消</strong></td>
+</tr>
+</tbody></table>
+<h3>総合評価</h3>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>評価</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>推進派</td>
+<td>5/5</td>
+<td>補強で傑作になりうる</td>
+</tr>
+<tr>
+<td>批判派</td>
+<td>2/5</td>
+<td>因果の連鎖に断絶あり</td>
+</tr>
+<tr>
+<td>読者代弁者</td>
+<td>4/5</td>
+<td>天皇処遇と山本の動機が鍵</td>
+</tr>
+<tr>
+<td>歴史考証官</td>
+<td>2/5</td>
+<td>革命速度と特高の過小評価</td>
+</tr>
+<tr>
+<td><strong>平均</strong></td>
+<td><strong>3.25/5</strong></td>
+<td>素材は優秀、考証面の補強が急務</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>上記の指摘はすべて改訂版のタイムライン・人物設計で対処済み。</p>
+</blockquote>
+<hr>
+<h2>第0章：浸透者 — 朴永哲（パク・ヨンチョル）</h2>
+<h3>キャラクター設定 【オリジナル】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名前</td>
+<td>朴永哲（パク・ヨンチョル）/ 日本名：<strong>木村鉄雄</strong></td>
+</tr>
+<tr>
+<td>生年</td>
+<td>1895年、朝鮮咸鏡北道</td>
+</tr>
+<tr>
+<td>民族</td>
+<td>朝鮮人</td>
+</tr>
+<tr>
+<td>言語</td>
+<td>朝鮮語、日本語（完璧）、ロシア語（流暢）</td>
+</tr>
+</tbody></table>
+<h3>経歴</h3>
+<pre><code>1895    朝鮮北部の貧農に生まれる
+1910    日韓併合（15歳）。家族がウラジオストクに移住
+         → ロシア沿海州の朝鮮人コミュニティで育つ
+
+1917    ロシア革命。22歳。ウラジオストクでボリシェヴィキと接触
+         → 朝鮮人労働者として赤軍パルチザンに参加
+
+1918-22 シベリア内戦
+         → 日本のシベリア出兵と直接対峙
+         → 「日本帝国主義」を肌で体験
+         → 赤軍内で軍事訓練を受ける
+
+1922    コミンテルン極東民族大会（モスクワ）に朝鮮代表として出席
+         → 片山潜、徳田球一と面識を得る
+         → コミンテルンから「日本工作」の任務を受ける
+
+1923    コルチャーク政権の沿アムール共和国が成立
+         → 朴は「白軍に降伏した元赤軍兵士」として偽装登録
+         → ウラジオストクに潜伏
+
+1924-28 ★多段浸透の構築★
+         → ウラジオストクの朝鮮人港湾労働者の中に細胞を組織
+         → 函館のロシア正教会コミュニティとの連絡路を確立
+           （特高の盲点：正教徒 ＝ 反共の白系ロシア人とみなされ監視が甘い）
+         → 漁船ルート（日本海沿岸の漁民による密輸）で文献・資金を運搬
+
+1929    日本名「木村鉄雄」を取得。北海道・夕張炭鉱に労働者として入坑
+         → 炭鉱の朝鮮人・アイヌ労働者の中で組織化を開始
+
+1933    夕張から札幌に移動。表向きは炭鉱機械の修理工
+         → 実態はコミンテルン日本支部・北海道地区の責任者
+         → 東京帝大のマルクス研究会との連絡線を確立
+</code></pre>
+<h3>朴永哲の設計意図</h3>
+<ul>
+<li><strong>3か国語</strong> — 朝鮮・ロシア・日本を横断する人物として、浸透ルートの地理的リアリティを体現</li>
+<li><strong>シベリア出兵の経験</strong> — 日本軍と直接戦った経験が、反帝国主義の動機を個人レベルで支える</li>
+<li><strong>「木村鉄雄」という日本名</strong> — 創氏改名ではなく生存のための偽装。アイデンティティの二重性がドラマの種</li>
+<li><strong>片山潜との面識</strong> — KR世界で片山潜はサンディカリスト指導者（1936年暗殺が五・一五事件の引き金）。片山との路線対立（サンディカリスム vs ボリシェヴィズム）がKR世界の左派内対立を朴の個人史に反映</li>
+<li><strong>特高の盲点</strong> — 正教会ルートは「白系ロシア人 ＝ 反共」という特高の先入観を利用する。考証上の穴を埋める具体的メカニズム</li>
+</ul>
+<hr>
+<h2>タイムライン</h2>
+<blockquote>
+<p><strong>正本は <a href="./kaiserreich-world-setting.md">kaiserreich-world-setting.md §2</a> を参照。</strong>
+以下は物語の期区分のみ抜粋。</p>
+</blockquote>
+<h3>期区分（1917〜1947年）</h3>
+<table>
+<thead>
+<tr>
+<th>期</th>
+<th>時期</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第零世代の遺産</td>
+<td>1910-1916</td>
+<td>回想・ゼロ章冒頭で処理。金廷民、堺利彦</td>
+</tr>
+<tr>
+<td>思想形成期</td>
+<td>1917-1922</td>
+<td>物語の真の開始点。ロシア革命〜三者対話〜「日本工作」任務</td>
+</tr>
+<tr>
+<td>地下浸透期</td>
+<td>1923-1928</td>
+<td>関東大震災〜正教会ルート確立〜廃墟の設計図</td>
+</tr>
+<tr>
+<td>組織拡大期</td>
+<td>1929-1935</td>
+<td>夕張炭鉱〜毛沢東密入国〜帝大研究会合流</td>
+</tr>
+<tr>
+<td>嵐</td>
+<td>1936-1939</td>
+<td>片山暗殺→BM→クーデター→赤い雪→Weltkrieg＋呉叛乱</td>
+</tr>
+<tr>
+<td>内戦〜建国</td>
+<td>1940-1944</td>
+<td>天皇問題→人民共和国建国→朝鮮独立格上げ</td>
+</tr>
+<tr>
+<td>東南アジア攻略〜連邦</td>
+<td>1944-1947</td>
+<td>蘭印→シンガポール→連邦憲法署名式→朴の最終選択</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📎 詳細タイムラインの正本は world-setting.md §2（改訂タイムラインC案）を参照。</p>
+</blockquote>
+<hr>
+<h2>主要人物一覧（セッション5反映版）</h2>
+<h3>革命側</h3>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>立場</th>
+<th>動機</th>
+<th>物語機能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>朴永哲（木村鉄雄）</strong></td>
+<td>コミンテルン工作員→革命の実務的組織者→連邦設計者</td>
+<td>反帝国主義。朝鮮人としての怒り。ボリシェヴィズムへの信念</td>
+<td>主人公。「両方選べると思ったが、選べなかった」</td>
+</tr>
+<tr>
+<td><strong>金廷民</strong></td>
+<td>第零世代の師匠格【オリジナル】</td>
+<td>朝鮮独立＋社会主義の統合</td>
+<td>ゼロ章で引き継ぎ→1920年獄死。「廃墟の設計図」</td>
+</tr>
+<tr>
+<td><strong>野坂参三</strong></td>
+<td>革命政権の穏健派リーダー（W10補足: KR世界ではモスクワに渡れず、1920年代にフランス・コミューンに亡命。サンディカリストの組織運営を現地で学び、1930年代前半に帰国。在欧経験が「国際派」の根拠。スターリン招聘の接触ルートも在仏時代の人脈による）</td>
+<td>国際派。天皇象徴化の推進者。現実主義</td>
+<td>朴の対立軸（講座派 vs 労農派）</td>
+</tr>
+<tr>
+<td><strong>徳田球一</strong></td>
+<td>獄中から解放された精神的支柱</td>
+<td>老闘士。朴と野坂の調停者</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>山本五十六</strong></td>
+<td>海軍航空派として革命政権に合流</td>
+<td><strong>派閥の論理。航空予算の確保。</strong> 思想的共鳴ではない</td>
+<td>「正しいから」ではなく「得だから」つく怖さ</td>
+</tr>
+<tr>
+<td><strong>二風谷カネト</strong></td>
+<td>アイヌ出身の炭鉱労働者→北海道蜂起の現場指導者</td>
+<td>土地収奪・同化政策への怒りを階級闘争に接続</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>架空の海軍下士官</strong></td>
+<td>呉叛乱の現場指導者</td>
+<td>水兵の待遇改善＋反戦</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>体制側</h3>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>立場</th>
+<th>備考</th>
+<th>物語機能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>鬼頭誠一郎</strong></td>
+<td>特高刑事→朴の鏡像【オリジナル】</td>
+<td>「信仰なきバーキアン＋ニヒリスティックな保守」</td>
+<td><strong>6シーン厳守。「知っていながら待つ」者。最後の対話で対称性完成</strong></td>
+</tr>
+<tr>
+<td><strong>昭和天皇</strong></td>
+<td>象徴化される</td>
+<td>受動的存在として描く</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>平沼騏一郎</strong></td>
+<td>統制派クーデター後の首相</td>
+<td>儒教的保守主義者</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>林銑十郎</strong></td>
+<td>陸軍大臣→内戦時の軍事指導者</td>
+<td>統制派</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>赤い共栄圏の「弟子」たち</h3>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>物語での位置</th>
+<th>朴との関係</th>
+<th>思想的意味</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>金日成</strong></td>
+<td>朝鮮独立→離脱</td>
+<td>師弟→競争→裏切り</td>
+<td>「主語の転轍」（搾取される者すべて→朝鮮民族）</td>
+</tr>
+<tr>
+<td><strong>毛沢東</strong></td>
+<td>中国帰還→統一戦争</td>
+<td>同志→独自路線</td>
+<td>「主語の拡大」（前衛党→四億人の解放者）</td>
+</tr>
+<tr>
+<td><strong>スカルノ</strong></td>
+<td>蘭印独立→パンチャシラ</td>
+<td>利害の同盟者（非共産）</td>
+<td>連邦の時限爆弾</td>
+</tr>
+<tr>
+<td><strong>ホー・チ・ミンの後継者</strong></td>
+<td>フランス・コミューン指令下（ホー本人は1933年暗殺【KR公式】）</td>
+<td>第三インター経由の戦術的同盟者</td>
+<td>三極間の思想的接触点</td>
+</tr>
+<tr>
+<td><strong>スターリン</strong></td>
+<td>「名誉顧問」として東京に亡命</td>
+<td>権威の装置。野坂経由で招聘</td>
+<td>権威の源泉＋粛清の影</td>
+</tr>
+</tbody></table>
+<h3>キャラクター制限ルール</h3>
+<table>
+<thead>
+<tr>
+<th>地域</th>
+<th>登場人物上限</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>朝鮮</td>
+<td>金日成＋2人まで</td>
+<td>「別の権力構造」は暗示一択。※R3で追加された朝鮮人女性活動家（許貞淑／槿友会モデル）は+2枠の1人としてカウント。残り1枠は朴との夜の対話等で登場する朝鮮側人物に充当</td>
+</tr>
+<tr>
+<td>台湾</td>
+<td>1人（名前なし）</td>
+<td>連邦憲法起草委のオブザーバー。発言遮断</td>
+</tr>
+<tr>
+<td>亡命協商</td>
+<td>0人</td>
+<td>台詞内の概念として一言</td>
+</tr>
+<tr>
+<td>アメリカ</td>
+<td>0人</td>
+<td>不在理由を一文で処理</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>テーマの構造（セッション3-5確定版）</h2>
+<h3>中心テーマ：「革命は誰のものか」</h3>
+<pre><code>  朴永哲（原理主義）        野坂参三（現実主義）       山本五十六（機会主義）
+  ─────────────       ──────────────       ──────────────
+  天皇制は完全に廃止すべき   象徴として残せば国民がついてくる  航空予算さえ出れば何でもいい
+  朝鮮は即時独立            自治権で段階的に             興味なし
+  財閥は徹底解体            計画的国有化                三菱が消えれば万歳
+  サンディカリスムは敵       共闘の余地あり              どっちでもいい
+
+  → 3人の対立が「革命後」の物語を駆動する
+</code></pre>
+<h3>物語の二軸（確定）</h3>
+<table>
+<thead>
+<tr>
+<th>軸</th>
+<th>テーマ</th>
+<th>中心人物</th>
+<th>核心の問い</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>朝鮮軸</strong></td>
+<td>革命は誰のものか</td>
+<td>朴永哲 ↔ 金日成</td>
+<td>「自決権を認める動詞の主語が日本である限り、それは自決ではない」</td>
+</tr>
+<tr>
+<td><strong>東南アジア軸</strong></td>
+<td>革命の代償</td>
+<td>朴永哲 ↔ スカルノ</td>
+<td>解放の名の下に、旧共栄圏と同じ中心＝周辺構造を再生産する皮肉</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>台湾は第三軸にしない。「問いを立てることすらできない者の存在」として二軸を補完する「鏡の破片」。</p>
+</blockquote>
+<h3>朴永哲の最終選択（確定）</h3>
+<ul>
+<li><strong>構造:</strong> 「両方選べると思ったが、選べなかった」</li>
+<li><strong>トリガー:</strong> 連邦憲法署名式(1947)で金日成「自決権の行使手続きが日本語で書かれている」</li>
+<li><strong>選択:</strong> 署名拒否→朝鮮へ→金日成が既に別の権力を固めている</li>
+<li><strong>着地:</strong> 「正しい選択をしたが正しい世界にならなかった」（不条理）</li>
+<li><strong>思想的到達:</strong> 「革命はそこで生きる者のもの」だが実現不可能と知っている</li>
+<li><strong>参照モデル:</strong> ローザ・ルクセンブルク（ただし朴は勝利した側に居続ける悲劇）</li>
+</ul>
+<h3>サブテーマ</h3>
+<ol>
+<li><strong>「なぜサンディカリスムでなくコミュニズムか」</strong> — 1923年アナーキスト蜂起の失敗＋農村革命の必要性＋地理的近接性（ロシア）。作中で登場人物が議論する</li>
+<li><strong>天皇制とコミュニズムの矛盾</strong> — 否定→反発→象徴化という三段階のプロセスそのものが物語</li>
+<li><strong>派閥の論理 vs 思想の論理</strong> — 山本は思想家ではなく組織人。「正しいから」ではなく「得だから」つく怖さ</li>
+<li><strong>植民地の矛盾</strong> — 革命政権が朝鮮・台湾を即座に手放せるか？ 「解放者」が新たな支配者になる構造的罠</li>
+<li><strong>孤立から覇権へ</strong> — 三重の孤立を「赤い共栄圏」で打破。しかし旧帝国と同じ中心＝周辺の支配構造を再生産する皮肉</li>
+<li><strong>連邦の核心矛盾</strong> — 「自決権を認める動詞の主語が日本である限り、それは自決ではない」</li>
+<li><strong>鬼頭と朴の対称性</strong> — 体制側と革命側で「知っていながら待った」二人の鏡像構造</li>
+</ol>
+<hr>
+<h2>章立て案（改訂版：セッション2-5反映＋15名レビュー反映）</h2>
+<blockquote>
+<p><strong>物語の二軸:</strong> 朝鮮（革命は誰のものか）＋ 東南アジア（革命の代償）
+<strong>全体スパン:</strong> 1917〜1947年（約30年）
+<strong>重心:</strong> 1936〜1947年（第3章〜終章）</p>
+</blockquote>
+<h3>R1確定: プロローグ「予感」（2-3ページ）</h3>
+<blockquote>
+<p><strong>合意:</strong> 仮想戦記編集者・純文学小説家・映画脚本家・歴史学者の4名全員一致。</p>
+</blockquote>
+<ul>
+<li>1947年。朴永哲がある場所に向かっている</li>
+<li><strong>どこに向かうのか、何を選ぶのかは一切明かさない</strong></li>
+<li>署名・拒否・連邦投票といったキーワードは出さない</li>
+<li>読者に与えるのは「この男の人生に取り返しのつかない瞬間が来る」という<strong>予感だけ</strong></li>
+<li>プロローグが「謎解き装置」にならないこと。読者を探偵にしない</li>
+<li>情報はゼロ。緊張だけ。2-3ページで切り、ゼロ章に飛ぶ</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>章</th>
+<th>時期</th>
+<th>中心人物</th>
+<th>内容</th>
+<th>鬼頭シーン</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ゼロ章</td>
+<td>1917-22</td>
+<td>金廷民→朴永哲</td>
+<td>引き継ぎ（帆布の小袋、堺への紹介状）→3・1運動→自由市事件→モスクワ三者対話。<strong>末尾：朴が部屋を出るとき振り返らなかった</strong>（W1確定。プロローグ＋序章をゼロ章に統合。「信仰から計算へ」を行動として刻む）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第1章</td>
+<td>1923-28</td>
+<td>朴永哲</td>
+<td>関東大震災〜浸透ルート構築〜廃墟の設計図発見</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第2章</td>
+<td>1929-35</td>
+<td>朴永哲／二風谷カネト</td>
+<td>北海道炭鉱潜入。毛沢東密入国(1933-35)。鬼頭が一歩近づく。<strong>中盤：朴が尾行を感じるが振り返らない</strong>（S-D1確定。正教会からの帰路、同じ足音が三度角を曲がる。朴は歩調を変えない。「振り返れば確認できるが、確認すれば相手も確認する」——この判断が鬼頭との知恵比べの始点）。<strong>末尾：老女の沈黙シーン</strong>（G5確定。朴が日本語で朝鮮人労働者を組織した後、老女が無言で朴の手を包む。朴は何も考えず翌日の工程表に移る。読者だけが「この組織化は誰のものか」を問う）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第3章</td>
+<td>1936</td>
+<td>群像</td>
+<td>片山潜暗殺→五・一五事件→Black Monday。三つの衝撃</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第4章</td>
+<td>1937</td>
+<td>朴永哲／平沼</td>
+<td>クーデター→弾圧→満洲蜂起</td>
+<td><strong>①BM後の群衆（声で確信）</strong></td>
+</tr>
+<tr>
+<td>第5章</td>
+<td>1937-38</td>
+<td>二風谷カネト</td>
+<td>「赤い雪」事件。北海道武装蜂起と鎮圧。<strong>章末尾に1行の内省</strong>（S-D3確定。鎮圧後、朴は大阪に潜伏しながら考える——「勝ったとして、炭鉱は誰のものになる」。一瞬で消える思考だが、赤い共栄圏＝旧共栄圏の再生産テーマの最初の種。第9章の建国地図シーンと対になる）</td>
+<td><strong>②特高粛清を生き延びる</strong>（R5確定: 廊下の音が止むシーン。鬼頭が歩くと取調室の音が一瞬止み、通り過ぎると再開する。「日本語ではない言葉」が混じる。鬼頭は無反応——間接暴力の構造的描写） <strong>③逮捕令状の遅延工作＋鬼頭文書伏線</strong>（R5確定: ③末尾、朴の手に身体的痕跡を暗示。第6章④図書館シーンで鬼頭がそれに気づくかは曖昧に）（W3確定。③末尾で令状を引き出しに仕舞う際「天皇の統治上の機能について（昭和十二年秋）」の見出しがちらっと見える。内面描写なし）</td>
+</tr>
+<tr>
+<td>第6章</td>
+<td>1939</td>
+<td>海軍下士官／山本</td>
+<td>呉軍港叛乱。山本の「不作為」。Weltkrieg勃発と重複</td>
+<td><strong>④図書館の無言の邂逅</strong></td>
+</tr>
+<tr>
+<td>第7章</td>
+<td>1940-41</td>
+<td>朴永哲 vs 野坂</td>
+<td>内戦。天皇問題の噴出（否定→反発→象徴化）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第8章</td>
+<td>1942</td>
+<td>昭和天皇（視点）</td>
+<td>象徴化の受諾。講座派の敗北。毛沢東帰還(42-43)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第9章</td>
+<td>1943-44</td>
+<td><strong>朴永哲</strong>（S-D4確定。視点を山本→朴に変更。山本を朴の視点から観察することで「得だからつく男」の不気味さを描く。山本は信念ではなく派閥の論理で革命に味方した——朴はそれを知りながら使う。この「信念なき同盟者を使う怖さ」が、第10章で金日成を道具として使う決断の伏線になる）</td>
+<td>人民海軍建設。建国。朝鮮自治→独立格上げ。<strong>建国地図の1カット</strong>（W4確定。壁に貼られた新しい国の輪郭——朴は通り過ぎ、立ち止まらない。第1章の帝国路線図との照応を読者だけが感じる）</td>
+<td><strong>⑤開戦後の中立（証明書の目撃者）</strong></td>
+</tr>
+<tr>
+<td>第10章</td>
+<td>1944-45</td>
+<td>スターリン／朴永哲／<strong>野坂</strong></td>
+<td>スターリン「名誉顧問」着任。蘭印外交圧力開始。タイ通過交渉。<strong>民生60%下の動揺</strong>（W3確定。派兵承認議会の場外で、旧労農派系議員が「配給が減る中で外征か」と声を上げる。1行の描写だが、革命政権が帝国と同じ選択を迫られている構造を可視化する）。<strong>野坂の「嫌な勝ち方」</strong>（Codex物語#1確定。派兵承認の人民評議会で、朴は「解放戦争」の論理に内心疑念を持ちながら賛成票を入れる。しかし付帯決議の文言をめぐり朴と野坂が対立——朴は「占領期間の上限5年」を主張するが、野坂が「上限を明記すれば5年後に撤退を迫られる。期限なしの方が柔軟」と切り返す。朴は論理的に反論できず、野坂案が通る。<strong>朴より正しいが、より嫌な勝ち方</strong>——野坂の現実主義が革命の建前を削ぐ瞬間。朴はこの敗北を飲み込んだまま金日成との夜の対話に臨む）。<strong>朴と金日成の夜の対話</strong>（W2確定。金日成が土地改革の数字を報告。朴が「それは」と言いかけ、やめる。言いかけた一音節が試し合いの終点。その後朴はタイ交渉の草稿に戻る）。<strong>注釈</strong>（S-E2確定）: 野坂に負けた直後に金日成を道具として使う——朴自身も革命の道具になった瞬間</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第11章</td>
+<td>1945-46</td>
+<td>金日成／群像</td>
+<td>シンガポール攻略。朝鮮自治三段階→独立。金日成の三重権力基盤形成。<strong>スカルノ第1シーン</strong>（Codex#5確定。陥落後、スカルノが朴に会いに来る。握手と笑顔——だが日本語で話さない。通訳を介す。植民地の言語を拒否する行為＝「この連帯は一時的だ」の宣言）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>第12章</td>
+<td>1947</td>
+<td>朴永哲</td>
+<td><strong>連邦評議会で日本案否決</strong>（#27確定。台湾棚上げ延長の動議に対し、インドネシア＋ベトナム＋朝鮮が反対票。日本が連邦の多数決に負ける初のシーン）。→ <strong>署名式前夜。</strong> 金日成「自決権の行使手続きが日本語で書かれている」。→ <strong>朴の身体的停止</strong>（Codex物語#2確定。署名式の朝、朴の机に連邦憲法の最終稿が届く。表紙の署名欄に「木村鉄雄」と印字されている——事務局が朴の公式名を使った。朴の手が止まる。30年間使った偽名が、革命国家の公文書に正式に刻まれようとしている。<strong>朝鮮人の朴永哲が設計した連邦を、日本人の木村鉄雄が署名する。</strong> これは合理化できない。理屈ではなく、手が動かない。隣室では朝鮮語版の翻訳がまだ届いていないと通訳が待たされている。朴はそれを見る。——署名拒否。）→ 朝鮮へ→金日成が既に別の権力を固めている</td>
+<td><strong>⑥革命後の文書保管係</strong></td>
+</tr>
+<tr>
+<td>終章</td>
+<td>1947</td>
+<td>朴永哲／鬼頭</td>
+<td>鬼頭との最後の対話。「それは昔、私が天皇制について言っていた言葉と同じです」。不条理の着地。<strong>ラスト：台詞で閉じない</strong>（S-D2+#28確定。対話の後、朴は窓の外を見る。通りの看板にハングルと日本語が併記されている。朴永哲には読める。木村鉄雄には読めない文字だった。）</td>
+<td><strong>最後の対話</strong></td>
+</tr>
+</tbody></table>
+<h3>15名レビュー反映: 追加設計ノート</h3>
+<h4>R2確定: 朴永哲の言語フレーム（「感情の不在」→「感情を表現する言語の不在」）</h4>
+<blockquote>
+<p><strong>合意:</strong> キャラクター心理専門家・革命家伝記作家・仮想戦記ファン・韓国文学翻訳者の4名全員一致。</p>
+</blockquote>
+<p>朴の問題を「感情がない」ではなく「感情を表現する言語を持たない」と再定義。三言語話者の裂け目を通じて人間性を描く。</p>
+<table>
+<thead>
+<tr>
+<th>実装</th>
+<th align="center">章</th>
+<th>内容</th>
+<th>言語の動き</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>酒場（P2採用）</strong></td>
+<td align="center">2</td>
+<td>木村鉄雄として同僚と飲む。笑っている自分に気づかない</td>
+<td>日本語の口語で最も自由。偽りの名前で最も自然体</td>
+</tr>
+<tr>
+<td><strong>幹部離反</strong></td>
+<td align="center">5-6</td>
+<td>朝鮮人幹部が朝鮮語で「あなたのために死にたいとは思えない」。朴が日本語に翻訳しようとして意味が変わることに気づく</td>
+<td>翻訳不可能な断絶。計算が初めて外れる</td>
+</tr>
+<tr>
+<td><strong>言語の混線（全編散布）</strong></td>
+<td align="center">全編</td>
+<td>感情が揺れる瞬間に地の文のテクスチャが変化。硬い漢語調→和語、朝鮮語が一語ルビなしで混入</td>
+<td>読者は無意識に揺れを感じる。説明しない</td>
+</tr>
+<tr>
+<td><strong>建国後の逆転</strong></td>
+<td align="center">9</td>
+<td>朝鮮語で演説後、一人で日本語の独り言。自分で気づいて黙る</td>
+<td>朴が裂け目を初めて認識。何もしない</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注意:</strong> 感情描写はすべて数行以内。朴が感情を自認して語る場面は終章以外では作らない。</p>
+</blockquote>
+<h4>R3+R4確定: 朝鮮人女性活動家の配置＋表象問題の対処</h4>
+<blockquote>
+<p><strong>合意:</strong> ポストコロニアル研究者・韓国近代史研究者・女性読者・構造設計者の4名一致（1名条件付き）。</p>
+</blockquote>
+<p><strong>1. 朝鮮人女性活動家（新キャラ・名前あり）</strong></p>
+<ul>
+<li><strong>参照モデル:</strong> 許貞淑（ホ・ジョンスク）・槿友会の歴史</li>
+<li><strong>位置:</strong> 朴のネットワーク内。第2章後半〜第5章</li>
+<li><strong>役割:</strong> 朴の「補助者」でも「恋愛対象」でもない。朴とは異なる革命の文法（女性労働者の解放・朝鮮民衆の自律的運動）を持つ存在</li>
+<li><strong>核心シーン:</strong> 朴が朝鮮人労働者を組織する場面で「あなたの革命は私たちの解放なのか」と問い返す。テーマの深化であり破壊ではない</li>
+<li><strong>条件:</strong> 朴の視点から描く。視点人物化は不要だが、名前と声を持つこと。「都合のいい声」にしない</li>
+</ul>
+<p><strong>2. 東南アジアの処理</strong></p>
+<ul>
+<li>「名前＋一行」の中途半端をやめる。スカルノは既に2シーンに拡張済み（Codex#5）</li>
+<li>朴との非対称性を示す: 朴は「他国の革命を設計する」唯一の存在。東南アジアの革命家は「自国の革命を設計する」。この対比が朴の構造的孤立を浮かび上がらせる</li>
+</ul>
+<p><strong>3. ローザ・ルクセンブルク</strong></p>
+<ul>
+<li>参照モデルのまま維持。ただし朴がローザを想起する場面で「自分の周囲にローザがいない（あるいは、いるのに見えていなかった）」という気づきを追加</li>
+<li>上記の朝鮮人女性活動家がローザ的機能（理論＋実践、国家/運動の暴力に晒される）を部分的に担う</li>
+</ul>
+<h4>R5確定: 特高の間接暴力描写</h4>
+<blockquote>
+<p><strong>合意:</strong> 昭和史研究家・構造設計者・在日コリアン文学研究者・サスペンス作家の4名全員一致。P4採用。直接描写不要、間接描写で実装。</p>
+</blockquote>
+<p><strong>第5章（主要修正）:</strong></p>
+<ul>
+<li>鬼頭が特高内部の粛清を生き延びる場面に追加:</li>
+<li>鬼頭が廊下を歩く。どこかの部屋から音が聞こえている</li>
+<li><strong>鬼頭がその扉の前を通るとき、音が止む。通り過ぎると再開する</strong></li>
+<li>取調官が「上官が通る」ことを察知して一瞬手を止めた＝暴力は組織的に認知されている。日常</li>
+<li>その音の中に**「日本語ではない言葉」**が混じっている。具体的な言語は特定しない</li>
+<li>鬼頭は何の反応も示さない。表情を変えず、歩調も変えず、逮捕令状の遅延工作を続ける</li>
+<li><strong>鬼頭の「善行」が暴力の体系の中で行われていることが構造的に示される</strong></li>
+</ul>
+<p><strong>第6章（補助修正）:</strong></p>
+<ul>
+<li>図書館で朴とすれ違う場面に微細な要素を追加:</li>
+<li>朴が本を取る手、または頁をめくる指に身体的痕跡を暗示する描写（古い傷跡、一瞬の硬直等）</li>
+<li>鬼頭がそれに気づくかどうかは曖昧にする</li>
+<li>二人の「対等な知的関係」の下にある<strong>権力の非対称性</strong>が身体を通じて示される</li>
+</ul>
+<p><strong>やらないこと:</strong></p>
+<ul>
+<li>取調室の内部の直接描写</li>
+<li>拷問の具体的描写（道具・手法・身体損傷）</li>
+<li>鬼頭に暴力への明示的な感情を語らせない。「無反応」そのものが描写</li>
+</ul>
+<h4>SUGGESTION採用分（第二次査読17件から）</h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>内容</th>
+<th>実装先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S-A1</td>
+<td>呉叛乱で通信室制圧手順の偶発性演出（「通信妨害→隣接艦が発光信号の異変を認識」）</td>
+<td>§6/第6章に反映済み</td>
+</tr>
+<tr>
+<td>S-B1</td>
+<td>財閥解体の軍需「国防例外」明記</td>
+<td>§12に反映済み</td>
+</tr>
+<tr>
+<td>S-C1</td>
+<td>ホー後継者を「自律的民族解放運動」として描く</td>
+<td>§19に反映済み</td>
+</tr>
+<tr>
+<td>S-C3</td>
+<td>MCP（マラヤ共産党）と中国設定（§18）の接続</td>
+<td>§19に反映済み</td>
+</tr>
+<tr>
+<td>S-D1</td>
+<td>特高vs朴の知恵比べ緊張シーン（朴が鬼頭の存在を初めて意識）</td>
+<td>第2章に反映済み</td>
+</tr>
+<tr>
+<td>S-D2</td>
+<td>終章を台詞でなく行動描写で閉じる</td>
+<td>終章「窓の外を見る」で反映済み</td>
+</tr>
+<tr>
+<td>S-D3</td>
+<td>「赤い共栄圏＝旧共栄圏の再生産」テーマを前半に埋め込む</td>
+<td>第5章章末の1行で反映済み</td>
+</tr>
+<tr>
+<td>S-D4</td>
+<td>第9章の視点を山本→朴に戻す</td>
+<td>第9章で反映済み</td>
+</tr>
+<tr>
+<td>S-E1</td>
+<td>毛沢東「主語の拡大」の独創性根拠補強（トロツキー永続革命論との差異）</td>
+<td>§18に反映済み</td>
+</tr>
+<tr>
+<td>S-E2</td>
+<td>朴の「設計→不条理」転落トリガー（金日成を道具として使う＝自分も道具になった）</td>
+<td>第10章注釈で反映済み</td>
+</tr>
+<tr>
+<td>S-E3</td>
+<td>各人物の理論的アンサー一覧表</td>
+<td>付録として反映済み</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>本文に登場しない要素（著者ノート / 設定資料のみ）</h3>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>理由</th>
+<th>参照先</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中国統一戦争の詳細</td>
+<td>本編背景のみ、外伝用資産</td>
+<td>world-setting §18</td>
+</tr>
+<tr>
+<td>台湾帰属問題</td>
+<td>「鏡の破片」2回の言及のみ。台湾人キャラ1名（名前なし、発言遮断）</td>
+<td>world-setting §20</td>
+</tr>
+<tr>
+<td>亡命協商＋インド洋</td>
+<td>台詞内の概念として一言で処理</td>
+<td>world-setting §21</td>
+</tr>
+<tr>
+<td>アメリカ</td>
+<td>不在理由を一文で処理し即退場</td>
+<td>world-setting §22</td>
+</tr>
+<tr>
+<td>山川均</td>
+<td>既存キャストで機能カバー済み。片山の死後に論考を読み返す1行のみ</td>
+<td>world-setting §24</td>
+</tr>
+<tr>
+<td>三極冷戦の詳細</td>
+<td>接触点の概念は示すが構造図は著者ノート</td>
+<td>world-setting §16</td>
+</tr>
+<tr>
+<td>正統性の三層構造</td>
+<td>物語の背景論理。本文では「正統性を巡る緊張」として暗示のみ</td>
+<td>world-setting §16</td>
+</tr>
+<tr>
+<td>朴と金日成の双方向の試し合い</td>
+<td>直接対話は最小限。第三者の報告・会議での沈黙で描く</td>
+<td>world-setting §17</td>
+</tr>
+<tr>
+<td>マレー半島民族構成・蘭印社会構造</td>
+<td>占領統治の複雑さは概念的に示す。個別テーブルは設定資料</td>
+<td>world-setting §19</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>赤い大東亜共栄圏 — 国際的孤立の解消</h2>
+<h3>構想：「東京コミンテルン」</h3>
+<p>三重の孤立（ドイツ・サンディカリスム・亡命協商すべてと敵対）を解消する鍵は、
+<strong>日本を亡命革命家の拠点にし、そこからアジア全体を共産化する</strong>こと。</p>
+<p>史実の「大東亜共栄圏」が日本帝国主義の覇権装置だったのに対し、
+「赤い大東亜共栄圏」は<strong>共産主義によるアジア植民地解放</strong>を旗印にする。
+しかし「解放」の名の下に日本が指導的地位を占める構造は、
+皮肉にも旧共栄圏と同じ矛盾を内包する。</p>
+<hr>
+<h3>各革命指導者のKR世界での状況と日本への経路</h3>
+<h4>レーニン — 不在の父</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td><strong>1918年8月にファニー・カプランに暗殺、死亡</strong>【KR公式】</td>
+</tr>
+<tr>
+<td>本作での扱い</td>
+<td>本人は登場しない。しかし「レーニンの遺志」が思想的旗印</td>
+</tr>
+<tr>
+<td>役割</td>
+<td>ボリシェヴィズムがKR世界で傍流に追いやられた原因であり、同時に朴永哲らの原体験。「レーニンが死んだからこそ、我々がやらねばならない」</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>レーニンの暗殺→ボリシェヴィキ敗北→サンディカリスム台頭、というKR世界の因果を、
+朴永哲が「逆転」させようとする物語として本作は機能する。</p>
+</blockquote>
+<hr>
+<h4>スターリン — フランスからの亡命者</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td><strong>ボリシェヴィキ敗北後にフランス・コミューンに亡命</strong>。軍事顧問として活動。パタゴニア遠征軍を指揮【KR公式】</td>
+</tr>
+<tr>
+<td>生年</td>
+<td>1878年（<strong>1943年到着時65歳</strong>）</td>
+</tr>
+<tr>
+<td>日本への経路</td>
+<td>フランス・コミューン → サンディカリスムとの路線対立 → パタゴニア遠征（失敗）→ 帰欧後さらに孤立 → <strong>1943年、野坂経由で日本到着。肉体的・政治的に消耗した状態</strong></td>
+</tr>
+<tr>
+<td>本作での役割</td>
+<td><strong>「名誉顧問」</strong>（権威の装置）。正統性三層構造（§16）の第二層・第三層の装置。実権なし</td>
+</tr>
+<tr>
+<td>ドラマ性</td>
+<td>史実では世界最大の独裁者になった男が、ここでは「名誉顧問」として異国で権威だけを帯びて老いる</td>
+</tr>
+</tbody></table>
+<pre><code>フランス・コミューン    →  路線対立   →  日本人民共和国
+（サンディカリスム）       「ボリシェヴィキは      （唯一のボリシェヴィキ国家）
+                          お呼びでない」
+    スターリン ──────────────────────→ 東京に亡命
+    （軍事顧問）                              （革命の「長老」として）
+</code></pre>
+<hr>
+<h4>毛沢東 — 死から蘇る男</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td><strong>秋収蜂起で死亡</strong>、またはド田舎の教師として無名のまま【KR公式：意図的に周縁化】</td>
+</tr>
+<tr>
+<td>本作での改変</td>
+<td><strong>秋収蜂起で負傷するも生存。農村に潜伏</strong>。KR公式からの意図的逸脱</td>
+</tr>
+<tr>
+<td>生年</td>
+<td>1893年（1944年時点で51歳）</td>
+</tr>
+<tr>
+<td>日本への経路</td>
+<td>北伐失敗→湖南農民運動挫折→1933-35年日本密入国（朴永哲ネットワーク経由）</td>
+</tr>
+<tr>
+<td>本作での役割</td>
+<td>農村革命の理論家。1942-43年に中国帰還→湖南・江西根拠地で農村ソビエト建設</td>
+</tr>
+<tr>
+<td>思想</td>
+<td>農村を根拠地とするボリシェヴィスト = 「主語の拡大」（前衛党→四億人の解放者）</td>
+</tr>
+<tr>
+<td>台湾問題</td>
+<td>段階的エスカレーション: 沈黙(44-45)→原則論(45-47)→連邦加盟条件化(47〜)</td>
+</tr>
+<tr>
+<td>ドラマ性</td>
+<td>KR世界で「死んだはずの男」が日本経由で復活し、最終的に中国を赤くする。日本は毛沢東の「修行の地」。本編では背景のみ（中国は外伝用資産）</td>
+</tr>
+</tbody></table>
+<hr>
+<h4>金日成 — 若き虎</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td>朝鮮独立運動の中のマイナーな人物。主流は金九（大韓民国臨時政府）【KR公式】</td>
+</tr>
+<tr>
+<td>生年</td>
+<td>1912年（1944年時点で32歳）</td>
+</tr>
+<tr>
+<td>日本への経路</td>
+<td>満洲の抗日パルチザン → 朴永哲（同じ朝鮮人）との接触 → 沿アムール経由で日本に</td>
+</tr>
+<tr>
+<td>本作での役割</td>
+<td>朴永哲の「弟子」→独自の権力基盤構築→朴を不要化。三重の権力基盤: パルチザン軍事力＋日本の選択的支持＋土地改革先行実施</td>
+</tr>
+<tr>
+<td>思想</td>
+<td><strong>革命的民族主義</strong>（ボリシェヴィズムは方法論、目的は民族解放）= 「主語の転轍」</td>
+</tr>
+<tr>
+<td>朴との関係</td>
+<td>師弟→競争→「四度目の裏切り」（設計者の不要化→指導者の神格化）</td>
+</tr>
+<tr>
+<td>離脱後</td>
+<td>フィンランド化が最蓋然。連邦からの形式的離脱＋実質的中立</td>
+</tr>
+<tr>
+<td>ドラマ性</td>
+<td>連邦憲法署名式で「自決権の行使手続きが日本語で書かれている」→ 朴の最終選択を誘発</td>
+</tr>
+</tbody></table>
+<hr>
+<h4>ホー・チ・ミン — 第三インターナショナルの戦術的同盟者（セッション4確定）</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td><strong>1933年にドイツ秘密警察に暗殺</strong>。インドシナ革命の殉教者【KR公式】</td>
+</tr>
+<tr>
+<td>本作での扱い</td>
+<td><strong>KR準拠</strong>。ホー本人は死亡。後継者がフランス・コミューンの指令下で活動</td>
+</tr>
+<tr>
+<td>位置づけ</td>
+<td><strong>第三インターナショナル（サンディカリスム陣営）の工作員</strong>として仏印に関与</td>
+</tr>
+<tr>
+<td>赤い共栄圏との関係</td>
+<td>戦術的同盟（反ドイツで利害一致）だが、思想的にはサンディカリスム系。三極冷戦の接触点</td>
+</tr>
+<tr>
+<td>仏印問題</td>
+<td>三段階方式（係争→中立化協定→独自地位）で処理。詳細は world-setting §19</td>
+</tr>
+</tbody></table>
+<hr>
+<h4>スカルノ — 非共産の同盟者</h4>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td><strong>蘭印でPNI（民族党）を率いる民族主義者。存命</strong>【KR公式】</td>
+</tr>
+<tr>
+<td>生年</td>
+<td>1901年（1944年時点で43歳）</td>
+</tr>
+<tr>
+<td>本作での扱い</td>
+<td><strong>共産主義者ではない</strong>。しかし「反植民地」で利害が一致する同盟者</td>
+</tr>
+<tr>
+<td>日本との関係</td>
+<td>パンチャシラ vs ボリシェヴィズムの緊張。蘭印のオランダ支配に対抗するため日本と組むが、共産化は拒否</td>
+</tr>
+<tr>
+<td>ドラマ性</td>
+<td><strong>連邦の時限爆弾</strong>。パンチャシラ（多元主義）とボリシェヴィズム（一党支配）の構造的不一致が連邦を内側から蝕む</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>「赤い共栄圏」の構造</h3>
+<pre><code>                    ┌─────────────────────┐
+                    │  日本人民共和国（東京） │
+                    │  ── 共栄圏の中心 ──  │
+                    │                     │
+                    │  朴永哲（組織者）      │
+                    │  野坂参三（外交）      │
+                    │  スターリン（名誉顧問） │
+                    │  山本五十六（航空戦力） │
+                    └────────┬────────────┘
+                             │
+          ┌──────────┬────────┼────────┬──────────┐
+          ▼          ▼        ▼        ▼          ▼
+      朝鮮        中国      ベトナム   インドネシア  台湾
+    金日成が帰還  毛沢東が帰還  ホー死亡    スカルノ    棚上げ
+    → 独立      → 根拠地    (KR公式)   （非共産     （帰属
+    → 離脱圧力   建設開始    後継者は    の同盟者）   未定）
+                            仏コミューン系
+</code></pre>
+<h3>各地域の解放タイムライン（セッション3-5確定版）</h3>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>地域</th>
+<th>展開</th>
+<th>参照</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1942-43</td>
+<td><strong>毛沢東帰還</strong></td>
+<td>日本から中国に帰還。湖南・江西根拠地で農村ソビエト建設開始</td>
+<td>§18</td>
+</tr>
+<tr>
+<td>1943-44</td>
+<td><strong>朝鮮自治→独立</strong></td>
+<td>自治三段階（総督府→自治局→議政院）→独立格上げ(1944-45)。金日成の三重権力基盤形成</td>
+<td>§17</td>
+</tr>
+<tr>
+<td>1943-44</td>
+<td><strong>蘭印外交圧力</strong></td>
+<td>DEI・GEAへの外交圧力→拒否→海軍中立化戦略に移行</td>
+<td>§19</td>
+</tr>
+<tr>
+<td>1944末</td>
+<td><strong>タイ通過交渉</strong></td>
+<td>ピブーン政権（反共だが地政学的実利優先）と交渉。北部4州領有承認＋革命不輸出が核心条件</td>
+<td>§19</td>
+</tr>
+<tr>
+<td>1945年3月-46</td>
+<td><strong>マレー半島→シンガポール</strong></td>
+<td>南方約6.5万投入（3梯団・8週間制限）。1945年3月南下開始（SWモンスーン前）→4月末ジョホール到達→包囲戦→1946年シンガポール陥落。GEA東洋艦隊降伏</td>
+<td>§19</td>
+</tr>
+<tr>
+<td>1945-46</td>
+<td><strong>蘭印資源確保</strong></td>
+<td>パレンバン→バリクパパン→ジャワの選択的制圧。石油が連邦の生命線</td>
+<td>§19</td>
+</tr>
+<tr>
+<td>1946-47</td>
+<td><strong>連邦形成</strong></td>
+<td>ユーゴ型連邦＋初期コミンテルン規律のハイブリッド。暫定円基軸→ACA（形骸化リスク。「算数の答えが日本語で書かれている」）</td>
+<td>§15</td>
+</tr>
+<tr>
+<td>1947</td>
+<td><strong>連邦憲法署名式</strong></td>
+<td>金日成「自決権の行使手続きが日本語で書かれている」→朴の最終選択</td>
+<td>§17, 終章</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>フィリピン — 宙吊りの存在（セッション5確定：最小限処理）</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>KR設定</td>
+<td>アメリカ連邦の自治領 → 1937年アメリカ内戦後に独立。ケソン大統領【KR公式】</td>
+</tr>
+<tr>
+<td>本作での扱い</td>
+<td><strong>名目独立・実質勢力争い。宙吊り状態を維持（物語終盤の変数として温存）</strong></td>
+</tr>
+<tr>
+<td>本文での処理</td>
+<td>名前のみ言及可。キャラクター・シーンなし</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>詳細設定は world-setting §22 を参照。アメリカの太平洋復帰(1947-48以降)は本作の舞台外。</p>
+</blockquote>
+<hr>
+<h3>旧共栄圏 vs 赤い共栄圏 — 構造比較</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旧・大東亜共栄圏</th>
+<th>赤い大東亜共栄圏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>建前</td>
+<td>「アジアの解放」</td>
+<td>「植民地の解放」</td>
+</tr>
+<tr>
+<td>本音</td>
+<td>日本の資源確保と覇権</td>
+<td>日本の資源確保と覇権（+共産化）</td>
+</tr>
+<tr>
+<td>イデオロギー</td>
+<td>汎アジア主義・天皇崇拝</td>
+<td>ボリシェヴィズム・反帝国主義</td>
+</tr>
+<tr>
+<td>指導権</td>
+<td>日本が当然の盟主</td>
+<td>日本が「革命の先輩」として指導</td>
+</tr>
+<tr>
+<td>矛盾</td>
+<td>「解放」の名で支配</td>
+<td>「解放」の名で影響力確保</td>
+</tr>
+<tr>
+<td>衛星国の本音</td>
+<td>「日本を追い出したい」</td>
+<td>「日本を追い出したい」</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>最大の皮肉：</strong> 革命によって生まれ変わったはずの日本が、
+結局は旧帝国と同じ構造的な矛盾（中心＝周辺の支配関係）を再生産する。
+この自己矛盾こそが「赤い桜」の物語的核心。</p>
+</blockquote>
+<hr>
+<h3>スターリンの特殊な位置（セッション6更新版）</h3>
+<p>スターリンは「名誉顧問」— 実権なき権威の装置。仏コミューンで孤立→パタゴニア遠征失敗→<strong>1943年、65歳で日本到着</strong>。肉体的・政治的に消耗した状態。</p>
+<pre><code>スターリンの位置づけ：
+
+【経歴 — GAP#8確定】
+  ソ連崩壊 → 欧州転々 → 仏コミューン（孤立、「客人だが囚人」）
+  → パタゴニア遠征（南米革命輸出計画に軍事顧問参加、失敗）
+  → 帰欧後さらに地位低下 → 1943年、野坂経由で日本到着（65歳）
+
+【権威の源泉 — 正統性三層構造（§16）における位置】
+  第二層（国際承認）: ボリシェヴィキ革命の生き証人＋コミンテルン委任の体現者
+  第三層（党内神話）: 「スターリンが認めた革命」= 党内結束の装置
+
+【「名誉顧問」の実態】
+  → 野坂が「飾り」として招聘。実権は与えない
+  → しかし朴永哲にとって「原則を体現する存在」として利用価値がある
+  → パタゴニアの失敗と仏コミューンでの屈辱を経て、
+     権力掌握の意欲よりも「居場所の確保」が行動原理に
+
+【物語機能】
+  → 革命の正統性を保証する「印璽」
+  → 同時に「この男の言葉を借りなければ本物にならないのか」という朴の苦悶
+  → 三極冷戦における赤い共栄圏の対外的信認の源
+</code></pre>
+<hr>
+<h2>付録：「革命は誰のものか」— 各人物アンサー一覧（S-E3確定）</h2>
+<blockquote>
+<p><strong>用途:</strong> 執筆時の参照表。各人物の台詞・行動が中心テーマに対してブレないよう制御する。
+<strong>座標系注記:</strong> 以下の命名法（「主語の転轍」「主語の拡大」等）は、朴永哲の設計思想における「主語」概念を座標軸としている。各登場人物自身がこのラベルを使うわけではなく、朴の座標系から見た相対的位置を記述するものである。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>人物</th>
+<th>アンサー</th>
+<th>根拠</th>
+<th>物語上の表出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>朴永哲</strong></td>
+<td>「搾取される者すべてのもの」→ だが設計者＝日本人（偽装）という矛盾を最後まで解決できない</td>
+<td>自由市事件で民族を捨て階級を選んだ。しかし「設計」という行為自体が権力</td>
+<td>第12章の署名拒否＋終章の看板（読めない文字）</td>
+</tr>
+<tr>
+<td><strong>金日成</strong></td>
+<td>「その土地で生きる者のもの」＝ 朝鮮民族のもの</td>
+<td>朴から学んだ革命技術を民族解放に転用。「主語の転轍」</td>
+<td>「自決権の行使手続きが日本語で書かれている」</td>
+</tr>
+<tr>
+<td><strong>片山潜</strong></td>
+<td>「勝った後の世界で人間を壊さないもの」</td>
+<td>クロンシュタット→英国革命で「前衛党なしでも革命は成る」を確信</td>
+<td>1922年三者対話の問い。1936年暗殺で問いだけが残る</td>
+</tr>
+<tr>
+<td><strong>野坂参三</strong></td>
+<td>「使えるものを使って生き延びるためのもの」</td>
+<td>実用主義。天皇を残すのも連邦を作るのも「機能するから」</td>
+<td>天皇象徴化の推進。スターリン招聘</td>
+</tr>
+<tr>
+<td><strong>徳田球一</strong></td>
+<td>「原則と現実の間で自分を引き裂くもの」</td>
+<td>ボリシェヴィキ原理に忠実だが、天皇制容認の政治的必要を「自覚的逸脱」として受け入れる</td>
+<td>天皇問題での仲裁＝第三の立場ではなく構造的強制</td>
+</tr>
+<tr>
+<td><strong>毛沢東</strong></td>
+<td>「四億人の農民のもの」</td>
+<td>朴の前衛党モデルを継承しつつ主語を「階級」から「民族＋農民」に拡大</td>
+<td>本編では背景のみ。帰還時の沈黙で暗示</td>
+</tr>
+<tr>
+<td><strong>鬼頭誠一郎</strong></td>
+<td>「秩序を守る側が問うべきではない問い」</td>
+<td>天皇制の統治機能を論理的に理解しつつ、体制側に留まった</td>
+<td>最後の対話「それは昔、私が天皇制について言っていた言葉と同じです」</td>
+</tr>
+<tr>
+<td><strong>山本五十六</strong></td>
+<td>問わない。「航空予算がつく側につく」</td>
+<td>思想ではなく派閥の論理。革命の大義に無関心な同盟者</td>
+<td>呉叛乱の「不作為」＋人民海軍建設の沈黙</td>
+</tr>
+<tr>
+<td><strong>二風谷カネト</strong></td>
+<td>「名前を呼ばれなかった者のもの」</td>
+<td>アイヌとして帝国にも革命にも包摂されない存在</td>
+<td>赤い雪事件。問いを立てることすらできない者の存在</td>
+</tr>
+<tr>
+<td><strong>スターリン</strong></td>
+<td>「正しく設計された党のもの」→ だが自分の党は失われた</td>
+<td>ボリシェヴィキ原理の体現者だが実権なし。権威の装置</td>
+<td>「名誉顧問」の沈黙。存在そのものが問いへの皮肉</td>
+</tr>
+<tr>
+<td><strong>昭和天皇</strong></td>
+<td>問いの外にいる。「革命」の語彙を持たない</td>
+<td>象徴化を受諾するが、それは「革命は誰のものか」への回答ではなく退場</td>
+<td>第8章の視点章。受諾の内面</td>
+</tr>
+</tbody></table>
+<h2>出典・参考</h2>
+<ul>
+<li><a href="./kaiserreich-japan-setting.md">kaiserreich-japan-setting.md</a> — 日本帝国のKR設定資料</li>
+<li><a href="./kaiserreich-world-setting.md">kaiserreich-world-setting.md</a> — 主要国家・陣営の世界設定（§1-25、セッション1-5の全決定事項）</li>
+<li><a href="https://ja.wikipedia.org/wiki/%E7%89%87%E5%B1%B1%E6%BD%9C">片山潜 - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E5%BE%B3%E7%94%B0%E7%90%83%E4%B8%80">徳田球一 - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E9%87%8E%E5%9D%82%E5%8F%82%E4%B8%89">野坂参三 - Wikipedia</a></li>
+<li><a href="https://kaiserreich.wiki/Japan">Empire of Japan - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.wiki/Japan/Paths">Empire of Japan/Paths - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Vladimir_Lenin">Vladimir Lenin - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Ioseb_Dzhugashvili">Ioseb Dzhugashvili (Stalin) - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Russia">Russia - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.wiki/German_East_Asia">German East Asia (Ho Chi Minh) - Kaiserreich Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Dutch_East_Indies">Dutch East Indies (Sukarno) - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Philippines">Philippines - Kaiserreich Fandom Wiki</a></li>
+<li><a href="https://kaiserreich.fandom.com/wiki/Korean_independence_movement">Korean Independence Movement - Kaiserreich Fandom Wiki</a></li>
+</ul>
+<hr>
+<h2>執筆ルール（Codex物語指摘#3-#6確定）</h2>
+<h3>ルール1: 主題制御の「論文化」防止（Codex#3）</h3>
+<ul>
+<li>「主語の転轍」「主語の拡大」「問いの外」等の整理語は<strong>作者メモ専用</strong>。本文には出さない</li>
+<li>本文では<strong>行動のズレだけで見せる</strong>。答えが噛み合わない会話が、読者に主題を体感させる</li>
+<li>付録「各人物のアンサー一覧表」は執筆時の内部参照のみ。作中で人物に自分の立場を解説させない</li>
+<li>テーマを語るのは朴でも金日成でもなく、<strong>読者がまだ迷っている状態</strong>を設計する</li>
+</ul>
+<h3>ルール2: 多言語モチーフの文体ルール（Codex#4）</h3>
+<p>朴は三言語話者（朝鮮語・日本語・ロシア語）。言語の選択自体が権力関係を示す。</p>
+<table>
+<thead>
+<tr>
+<th>場面</th>
+<th>文体処理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>地の文</strong></td>
+<td>朴の理解に寄せる。朴が理解できる言語はすべて日本語の地の文として提示。読者は朴の耳で聞く</td>
+</tr>
+<tr>
+<td><strong>通訳が入る場面</strong></td>
+<td>訳文のみ提示。原語は出さない。<strong>何が訳されなかったかを読者に想像させる</strong></td>
+</tr>
+<tr>
+<td><strong>朴が朝鮮語を使う瞬間</strong></td>
+<td>地の文の質感が一瞬変わる。具体的手法は執筆時に決定するが、「朴が日本語以外で考えている」ことを読者に感じさせる</td>
+</tr>
+<tr>
+<td><strong>スカルノが日本語を拒否する場面</strong></td>
+<td>通訳の声だけが聞こえる。スカルノの原語は一切出さない。拒否の理由も説明しない——行動だけ</td>
+</tr>
+<tr>
+<td><strong>終章の看板</strong></td>
+<td>ハングルを地の文に一瞬だけ露出させる。「木村鉄雄には読めない文字」——読者の多くにも読めない。この「読めなさ」自体がテーマの体感</td>
+</tr>
+<tr>
+<td><strong>「読者にあえて分からせないもの」</strong></td>
+<td>朝鮮語の原語。金日成が朝鮮語で何を言っているかは朴経由の日本語でしか提示されない。連邦の公用語問題が読者の体験レベルで再現される</td>
+</tr>
+</tbody></table>
+<h3>ルール3: タイトル「赤い桜」の実景化（Codex#5）</h3>
+<p>桜を<strong>3回のみ</strong>実景として挿入。</p>
+<table>
+<thead>
+<tr>
+<th>回</th>
+<th>章</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1回目</strong></td>
+<td>ゼロ章（1922年春）</td>
+<td>片山との三者対話の後、朴がモスクワ（orベルリン近郊）を発つ。窓の外に桜に似た花が咲いている。朴は一瞬見て、振り返らない。<strong>「振り返らなかった」の反復第一回</strong></td>
+</tr>
+<tr>
+<td><strong>2回目</strong></td>
+<td>第9章（1944年春）</td>
+<td>建国宣言の日。東京の桜が満開。新しい国旗に赤い桜が使われている。「美しい国家の看板」——旧帝国も桜を使っていたことを読者だけが重ねる</td>
+</tr>
+<tr>
+<td><strong>3回目</strong></td>
+<td>第12章（1947年春）</td>
+<td>署名式の会場に桜の枝が飾られている。朴は署名を拒否して立ち上がる。桜は残る。——看板は変わらない</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>3回のみ。桜を説明しない。読者が3回目で「これは旧帝国と同じ看板だ」と気づけば成功。</p>
+</blockquote>
+<h3>ルール4: 通しモチーフ「紙」の選定（Codex#6）</h3>
+<p>分散している感情アンカー（老女・通訳・鬼頭・看板）を**「紙」**で貫通する。</p>
+<table>
+<thead>
+<tr>
+<th>章</th>
+<th>「紙」の登場</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ゼロ章</td>
+<td>金廷民が朴に託す帆布の小袋——中に堺への紹介状（<strong>紙</strong>）</td>
+</tr>
+<tr>
+<td>第1章</td>
+<td>函館正教会ルートの連絡文書。暗号化された<strong>紙</strong>片</td>
+</tr>
+<tr>
+<td>第2章</td>
+<td>朴が翌日の工程表に移る（<strong>紙</strong>）。老女の手は紙には触れない</td>
+</tr>
+<tr>
+<td>第5章</td>
+<td>鬼頭が引き出しに仕舞う逮捕令状（<strong>紙</strong>）。その下の天皇文書</td>
+</tr>
+<tr>
+<td>第9章</td>
+<td>壁に貼られた新しい国の地図（<strong>紙</strong>）。朴は通り過ぎる</td>
+</tr>
+<tr>
+<td>第10章</td>
+<td>タイ交渉の草稿（<strong>紙</strong>）。朴は金日成との対話後にこの紙に戻る</td>
+</tr>
+<tr>
+<td>第12章</td>
+<td>連邦憲法の最終稿（<strong>紙</strong>）。「木村鉄雄」と印字された署名欄。手が止まる</td>
+</tr>
+<tr>
+<td>終章</td>
+<td>鬼頭が整理している旧特高の報告書（<strong>紙</strong>）。通りの看板（<strong>紙ではないが文字</strong>）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>設計原則:</strong> 「紙」は革命の成果物であると同時に、権力の証拠物。誰が書き、誰が読み、誰が読めないか——言語モチーフと接続する。新しいキャラは増やさない。既存のシーンに「紙」が既にあることに気づかせる。</p>
+</blockquote>
+
+  </main>
+</body>
+</html>

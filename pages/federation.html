@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>連邦制度リファレンス — 赤い桜 設定資料集</title>
+  <style>
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #334155;
+  --code-bg: #0d1117;
+  --nav-bg: #1e293b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* ナビゲーションヘッダー */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  color: var(--accent-hover);
+}
+
+.site-nav .nav-home {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.site-nav .nav-sep {
+  color: var(--border);
+  user-select: none;
+}
+
+.site-nav .nav-current {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+/* メインコンテンツ */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* 見出し */
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin: 2rem 0 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin: 2.5rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.8rem 0 0.5rem;
+}
+
+h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.4rem;
+}
+
+/* 段落・リスト */
+p {
+  margin: 0.75rem 0;
+  color: var(--text);
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+li {
+  margin: 0.3rem 0;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+th {
+  background: var(--card-bg);
+  color: var(--text);
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+tr:hover td {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* blockquote */
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.25rem 0;
+  padding: 0.6rem 1.25rem;
+  background: var(--card-bg);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+}
+
+blockquote p {
+  margin: 0.3rem 0;
+  color: var(--text-muted);
+}
+
+/* コード */
+code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1em 0.45em;
+  font-family: "Consolas", "Fira Code", monospace;
+  font-size: 0.88em;
+  color: #7dd3fc;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+}
+
+/* リンク */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* 水平線 */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* 強調 */
+strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+em {
+  color: var(--text-muted);
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .content {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .site-nav {
+    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+  }
+}
+
+/* ---- 目次ページ専用 ---- */
+.index-hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.index-hero h1 {
+  font-size: 2rem;
+  border: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.index-hero .subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  background: #263248;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.card-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.card-arrow {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="サイトナビゲーション">
+  <a href="index.html" class="nav-home">赤い桜 — 設定資料集</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">連邦制度リファレンス</span>
+  <span class="nav-sep" style="flex:1"></span>
+  <a href="world-setting.html">世界設定</a><span class="nav-sep"> | </span><a href="japan-setting.html">日本設定</a><span class="nav-sep"> | </span><a href="scenario.html">シナリオ構成</a>
+</nav>
+  <main class="content" id="main-content">
+    <h1>赤い大東亜共栄圏 連邦制度リファレンス（正本）</h1>
+<blockquote>
+<p><strong>用途：</strong> 連邦の制度設計に関する確定事項の一覧表。執筆時の即時参照用。
+<strong>正本管理：</strong> このファイルが連邦制度の正本。world-setting.md §15は設計経緯・議論記録として残置。矛盾がある場合はこちらが優先。
+<strong>最終更新：</strong> 2026-03-22（セッション7＋Codex指摘反映）</p>
+</blockquote>
+<hr>
+<h2>1. 構成国・地位一覧</h2>
+<table>
+<thead>
+<tr>
+<th>国・地域</th>
+<th>地位</th>
+<th align="center">評議会投票権</th>
+<th align="center">拒否権</th>
+<th align="center">憲法署名</th>
+<th align="center">ACA加盟</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>日本人民共和国</strong></td>
+<td>創設構成国</td>
+<td align="center">✅ 1票</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">創設加盟</td>
+<td>事務局所在地。暫定円基軸の管理者</td>
+</tr>
+<tr>
+<td><strong>朝鮮人民共和国</strong></td>
+<td>創設構成国</td>
+<td align="center">✅ 1票</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">創設加盟</td>
+<td>最大の構造的債務者</td>
+</tr>
+<tr>
+<td><strong>インドネシア</strong></td>
+<td>条件付き構成国</td>
+<td align="center">✅ 1票</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">条件付き加盟</td>
+<td>1946年DEI奪取後に加盟。スカルノの統合思想との緊張</td>
+</tr>
+<tr>
+<td><strong>ベトナム（インドシナ）</strong></td>
+<td>オブザーバー</td>
+<td align="center">✅ 1票</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">オブザーバー</td>
+<td>仏印問題（§15三段階方式）未解決。投票権はあるが拒否権・署名権なし</td>
+</tr>
+<tr>
+<td><strong>中国（共産党勢力）</strong></td>
+<td>連携勢力</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">未加盟</td>
+<td>統一戦争中のため正式加盟は遅延。毛沢東は連邦の外から影響力を行使</td>
+</tr>
+<tr>
+<td><strong>台湾</strong></td>
+<td><strong>暫定行政地域</strong></td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">非加盟</td>
+<td>連邦の構成国ではない。日本の暫定行政下。帰属は平和条約で確定（§20）</td>
+</tr>
+<tr>
+<td><strong>奉天</strong></td>
+<td>非加盟・経済協定国</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">非加盟</td>
+<td>灰色市場で域内外決済を仲介（§18）</td>
+</tr>
+<tr>
+<td><strong>タイ</strong></td>
+<td>非加盟・友好国</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">非加盟</td>
+<td>マラッカ海峡通商優遇のみ（§19）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>投票権と地位の関係：</strong> ベトナムは「オブザーバー」だが投票権を持つ——仏印問題の政治的配慮として「議決には参加させるが、連邦の法的責任は負わせない」設計。これにより1947年の台湾棚上げ延長否決でベトナムが反対票を投じることが可能。</p>
+</blockquote>
+<hr>
+<h2>2. 評議会の議決ルール</h2>
+<table>
+<thead>
+<tr>
+<th>議題カテゴリー</th>
+<th>議決方式</th>
+<th align="center">拒否権</th>
+<th>具体例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>連邦存立案件</strong></td>
+<td>全会一致</td>
+<td align="center">✅ 適用</td>
+<td>軍事作戦の開始・加盟国除名・憲章改正・新規加盟承認</td>
+</tr>
+<tr>
+<td><strong>行政的議題</strong></td>
+<td>単純多数決</td>
+<td align="center">❌ 不適用</td>
+<td>暫定措置の延長・領土管理の見直し・通商協定・技術移転計画</td>
+</tr>
+<tr>
+<td><strong>経済案件</strong></td>
+<td>単純多数決</td>
+<td align="center">❌ 不適用</td>
+<td>ACA運用規則・為替レート決定・予算配分</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>設計者のジレンマ：</strong> この区分は朴が起草した。各国の拒否権を認めつつ日常的意思決定を麻痺させない合理的設計。しかし台湾棚上げ延長は「暫定措置の延長」として単純多数決の対象になる。朴の設計が朴自身を否定する構造。</p>
+<p><strong>日本が拒否権を「使えない」理由：</strong> 法的には存立案件に持ち込む解釈も可能だが、行使すれば「日本は帝国と同じだ」という証明になる。拒否権は制度的に禁じられているのではなく、政治的に使えない。</p>
+</blockquote>
+<hr>
+<h2>3. 経済統合（ACA）</h2>
+<h3>決済の二重構造</h3>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>通貨</th>
+<th>管理者</th>
+<th>対象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>域内</strong></td>
+<td>清算単位（CU）</td>
+<td>連邦評議会</td>
+<td>加盟国間の貿易。四半期ごとに差額を円または現物で精算</td>
+</tr>
+<tr>
+<td><strong>域外</strong></td>
+<td>金／スイスフラン</td>
+<td>日本（実質管理）</td>
+<td>蘭印石油の対外販売。外貨収入は連邦共通準備基金にプール</td>
+</tr>
+</tbody></table>
+<h3>ACAの「意図的不完全性」</h3>
+<table>
+<thead>
+<tr>
+<th>欠落</th>
+<th>EPUの対応物</th>
+<th>欠如の政治的理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基軸準備資産</td>
+<td>ドル＋BIS</td>
+<td>定義した瞬間に「円以外の最終決済手段」が可視化される</td>
+</tr>
+<tr>
+<td>規律機関</td>
+<td>OEEC</td>
+<td>日本が自分自身に規律をかける仕組みを作らなかった</td>
+</tr>
+<tr>
+<td>通貨主権の調整</td>
+<td>IMF的枠組み</td>
+<td>為替政策を日本が握ることを意味する</td>
+</tr>
+</tbody></table>
+<h3>離脱できない三層構造</h3>
+<ul>
+<li><strong>経済層：</strong> 域外決済手段を持たない国はACA離脱＝対外貿易不能</li>
+<li><strong>制度層：</strong> ACA前提の国内法制の解体コストが膨大</li>
+<li><strong>政治層：</strong> ACA離脱＝連邦離脱宣言と見なされ軍事的対応リスク</li>
+</ul>
+<blockquote>
+<p><strong>金日成の台詞：</strong> 「算数の答えが日本語で書かれている」</p>
+</blockquote>
+<hr>
+<h2>4. 軍事統合</h2>
+<pre><code>第一層：連邦統合軍事委員会（FEAC）— 日本人民軍が議長権
+第二層：地域統合軍（北方軍区＝対ソ対米 / 南方軍区＝対英）
+第三層：各国人民軍（実質独立。連邦作戦は「派兵協定」で都度承認）
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>国</th>
+<th>海軍の役割</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>日本人民海軍</td>
+<td>外洋作戦・制海権・航空主兵</td>
+</tr>
+<tr>
+<td>朝鮮人民海軍</td>
+<td>日本海沿岸警備・機雷・小型艇</td>
+</tr>
+<tr>
+<td>インドネシア人民海軍</td>
+<td>島嶼間輸送・マラッカ海峡監視</td>
+</tr>
+<tr>
+<td>ベトナム人民海軍</td>
+<td>河川・沿岸作戦のみ</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. 正統性の三層構造</h2>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>聴衆</th>
+<th>内容</th>
+<th>脆弱性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一層：革命的自決</td>
+<td>構成国・人民</td>
+<td>「各民族が自ら革命を選んだ」</td>
+<td>金日成の「自決権の行使手続きが日本語で書かれている」</td>
+</tr>
+<tr>
+<td>第二層：国際承認</td>
+<td>対外</td>
+<td>コミンテルン委任＋唯一の成功＋スターリンの証言</td>
+<td>第三インターとの正統性闘争</td>
+</tr>
+<tr>
+<td>第三層：党内神話</td>
+<td>日本共産党内部</td>
+<td>片山の遺志→朴の実行→スターリンの承認</td>
+<td>神話と事実の乖離が進むほど修正困難</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>三層間の矛盾：</strong> 自決（第一層）と国際承認（第二層）は論理的に矛盾する。第三層の党内神話がこの矛盾を覆い隠す。金日成とスカルノは三層すべてを見通す位置にいる。</p>
+</blockquote>
+<hr>
+<h2>6. 旧共栄圏との対比（核心テーブル）</h2>
+<table>
+<thead>
+<tr>
+<th>軸</th>
+<th>旧共栄圏</th>
+<th>赤い共栄圏</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>盟主の位置</td>
+<td>日本（明示的支配）</td>
+<td>日本（実質的指導、建前は対等）</td>
+</tr>
+<tr>
+<td>正当性の根拠</td>
+<td>文明・人種的優越</td>
+<td>イデオロギー的「革命の先達」</td>
+</tr>
+<tr>
+<td>統制手段</td>
+<td>軍事・経済（軍票）</td>
+<td>党規律・コミンテルン組織論</td>
+</tr>
+<tr>
+<td>通貨</td>
+<td>軍票強制</td>
+<td>各国通貨法定化＋暫定円基軸</td>
+</tr>
+<tr>
+<td>資源調達</td>
+<td>統制価格（実質収奪）</td>
+<td>優先購買契約（市場参照価格±20%）</td>
+</tr>
+<tr>
+<td>労働</td>
+<td>強制動員（ロームシャ）</td>
+<td>労働契約＋組合権</td>
+</tr>
+<tr>
+<td>意思決定</td>
+<td>日本単独</td>
+<td>連邦評議会（議題により拒否権付き）</td>
+</tr>
+<tr>
+<td>公用語</td>
+<td>日本語強制</td>
+<td>併記原則（ただし原本は日本語）</td>
+</tr>
+<tr>
+<td>離脱権</td>
+<td>なし</td>
+<td>明文化（ただし離脱コストは高い）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>核心的「ズレ」：</strong> 隠蔽の論理が変わっただけで日本が中心にいる構造は変わらない。登場人物は「これは違う」と信じるが、読者には同型性が見える。</p>
+</blockquote>
+<hr>
+<h2>7. 生存スコア（52/100）</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>満点</th>
+<th>現在値</th>
+<th>変動要因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>資源自給率（実効値）</td>
+<td>20</td>
+<td>12</td>
+<td>蘭印石油確保で+3。パレンバン破壊工作成功で-6以上</td>
+</tr>
+<tr>
+<td>工業生産水準</td>
+<td>20</td>
+<td>7</td>
+<td>1945年時点で66-70%（軍需72%/民生60%の乖離）。精密機械・化学の回復遅延。75-80%到達は1948-50年以降</td>
+</tr>
+<tr>
+<td>財政健全性</td>
+<td>20</td>
+<td>10</td>
+<td>奉天協定による満洲資源アクセスで+2確保。ACA設立遅延で-3リスク</td>
+</tr>
+<tr>
+<td>制度的統治能力</td>
+<td>20</td>
+<td>8</td>
+<td>「算数の答えが日本語で書かれている」状態の反映。連邦官僚現地化で+3余地</td>
+</tr>
+<tr>
+<td>社会的凝集性</td>
+<td>20</td>
+<td><strong>15</strong></td>
+<td>平時基準。金日成の離脱圧力・スカルノの緊張・旧軍転向組の不均一が構造的に存在。戦時ピーク17。共通敵消失時に-8前後で7まで急落</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>100</strong></td>
+<td><strong>52</strong></td>
+<td>平時基準。戦時ピーク55。危機時46圏（連邦維持臨界=45）</td>
+</tr>
+</tbody></table>
+
+  </main>
+</body>
+</html>
