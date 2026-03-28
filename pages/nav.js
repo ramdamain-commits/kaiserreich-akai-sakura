@@ -222,7 +222,80 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* 5. 前ページ/次ページリンク                                          */
+  /* 5a. ページ上部の章間ナビバー（site-nav 直後に挿入）               */
+  /* ------------------------------------------------------------------ */
+  function buildTopChapterNav() {
+    const file = currentFile();
+    const idx = PAGE_ORDER.findIndex(function (p) { return p.file === file; });
+    /* 対象外ページ（index.html など）はスキップ */
+    if (idx === -1) return;
+
+    const prev = PAGE_ORDER[idx - 1] || null;
+    const next = PAGE_ORDER[idx + 1] || null;
+    const current = PAGE_ORDER[idx];
+
+    const nav = document.createElement('nav');
+    nav.className = 'chapter-nav chapter-nav--top';
+    nav.setAttribute('aria-label', '章ナビゲーション（上部）');
+
+    /* 前の章リンク */
+    if (prev) {
+      const a = document.createElement('a');
+      a.href = prev.file;
+      a.className = 'chapter-link chapter-link--prev';
+      a.innerHTML = '<span class="chapter-link__arrow">&larr;</span><span class="chapter-link__label">' + prev.label + '</span>';
+      nav.appendChild(a);
+    } else {
+      const span = document.createElement('span');
+      span.className = 'chapter-link chapter-link--placeholder';
+      nav.appendChild(span);
+    }
+
+    /* 現在の章タイトル + 目次へのリンク */
+    const center = document.createElement('div');
+    center.className = 'chapter-nav__center';
+    const indexLink = document.createElement('a');
+    indexLink.href = 'index.html';
+    indexLink.className = 'chapter-nav__index-link';
+    indexLink.setAttribute('aria-label', '目次へ戻る');
+    indexLink.textContent = '目次';
+    const sep1 = document.createElement('span');
+    sep1.className = 'chapter-nav__sep';
+    sep1.setAttribute('aria-hidden', 'true');
+    sep1.textContent = '|';
+    const currentSpan = document.createElement('span');
+    currentSpan.className = 'chapter-nav__current';
+    currentSpan.setAttribute('aria-current', 'page');
+    currentSpan.textContent = current.label;
+    center.appendChild(indexLink);
+    center.appendChild(sep1);
+    center.appendChild(currentSpan);
+    nav.appendChild(center);
+
+    /* 次の章リンク */
+    if (next) {
+      const a = document.createElement('a');
+      a.href = next.file;
+      a.className = 'chapter-link chapter-link--next';
+      a.innerHTML = '<span class="chapter-link__label">' + next.label + '</span><span class="chapter-link__arrow">&rarr;</span>';
+      nav.appendChild(a);
+    } else {
+      const span = document.createElement('span');
+      span.className = 'chapter-link chapter-link--placeholder';
+      nav.appendChild(span);
+    }
+
+    /* site-nav の直後に挿入する */
+    const siteNav = document.querySelector('.site-nav');
+    if (siteNav && siteNav.nextSibling) {
+      siteNav.parentNode.insertBefore(nav, siteNav.nextSibling);
+    } else if (siteNav) {
+      siteNav.parentNode.appendChild(nav);
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 5b. ページ下部の章間ナビ（本文末尾に挿入）                         */
   /* ------------------------------------------------------------------ */
   function buildPageNavigation() {
     const file = currentFile();
@@ -315,7 +388,8 @@
     buildTOC();
     setupTOCHighlight();
     buildBackToTopButton();
-    buildPageNavigation();
+    buildTopChapterNav();   /* ページ上部の章間ナビバー */
+    buildPageNavigation();  /* ページ下部の前後ナビ */
   });
 
 }());
