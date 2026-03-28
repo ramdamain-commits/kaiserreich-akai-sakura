@@ -2,3 +2,11 @@ node_modules/
 package-lock.json
 *.docx
 output/
+
+# 非公開ファイル（public repo 用）
+manuscript/
+CLAUDE.md
+AGENTS.md
+review-codex.md
+revision-plan-3rd.md
+.claude/
