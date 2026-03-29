@@ -4,7 +4,7 @@
 
 ### Added
 
-- GitHub Pages に本編19章分の HTML ページを追加（`pages/ch-*.html`）
+- GitHub Pages に全19篇分の HTML ページを追加（`pages/ch-*.html`、プロローグ＋本編17章＋終章）
 - `build-pages.js` に `CHAPTERS` 配列と `buildChapterPage()` を追加し、原稿 Markdown → HTML 変換に対応
 - `pages/index.html` に「本編」セクションを追加（章カード一覧）
 - `pages/nav.js` に `CHAPTER_ORDER` を追加し、章ページでも前後ナビ・TOC・トップへ戻るが動作するように拡張
