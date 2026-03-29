@@ -13,7 +13,7 @@ const { marked } = require('marked');
 const ROOT = __dirname;
 const PAGES_DIR = path.join(ROOT, 'pages');
 
-/** 変換対象ドキュメント */
+/** 変換対象ドキュメント（設定資料） */
 const DOCS = [
   {
     src: 'kaiserreich-world-setting.md',
@@ -39,6 +39,29 @@ const DOCS = [
     title: 'シナリオ構成',
     desc: '物語の構造・テーマ設計',
   },
+];
+
+/** 変換対象章（本編） manuscript/ 配下の Markdown を pages/ に出力 */
+const CHAPTERS = [
+  { src: 'prologue.md',      out: 'ch-prologue.html', title: 'プロローグ 予感' },
+  { src: 'chapter-zero.md',  out: 'ch-zero.html',     title: 'ゼロ章 信仰から計算へ' },
+  { src: 'chapter-01.md',    out: 'ch-01.html',       title: '第一章 廃墟の設計図' },
+  { src: 'chapter-02.md',    out: 'ch-02.html',       title: '第二章 彼女の名前' },
+  { src: 'chapter-03.md',    out: 'ch-03.html',       title: '第三章 三つの衝撃' },
+  { src: 'chapter-04.md',    out: 'ch-04.html',       title: '第四章 引き金' },
+  { src: 'chapter-05.md',    out: 'ch-05.html',       title: '第五章 赤い雪' },
+  { src: 'chapter-06.md',    out: 'ch-06.html',       title: '第六章 海の上の書庫' },
+  { src: 'chapter-07.md',    out: 'ch-07.html',       title: '第七章 名簿' },
+  { src: 'chapter-07b.md',   out: 'ch-07b.html',      title: '第七章 東京' },
+  { src: 'chapter-08.md',    out: 'ch-08.html',       title: '第八章 象徴' },
+  { src: 'chapter-09.md',    out: 'ch-09.html',       title: '第九章 建国' },
+  { src: 'chapter-10.md',    out: 'ch-10.html',       title: '第十章 道具' },
+  { src: 'chapter-11.md',    out: 'ch-11.html',       title: '第十一章 金日成' },
+  { src: 'chapter-12.md',    out: 'ch-12.html',       title: '第十二章 南' },
+  { src: 'chapter-13.md',    out: 'ch-13.html',       title: '第十三章 解放' },
+  { src: 'chapter-14.md',    out: 'ch-14.html',       title: '第十四章 署名' },
+  { src: 'chapter-15.md',    out: 'ch-15.html',       title: '第十五章 帰還' },
+  { src: 'chapter-final.md', out: 'ch-final.html',    title: '終章' },
 ];
 
 // ---- CSS -----------------------------------------------------------------
@@ -361,7 +384,7 @@ em {
 // ---- ナビゲーションリンク生成 -------------------------------------------
 
 /**
- * 指定ドキュメント用のナビゲーション HTML を生成する。
+ * 設定資料ページ用のナビゲーション HTML を生成する。
  * @param {object} currentDoc - 現在のドキュメント情報（DOCS の要素）
  * @returns {string} nav 要素の HTML
  */
@@ -378,6 +401,20 @@ function buildNav(currentDoc) {
   <span class="nav-current">${currentDoc.title}</span>
   <span class="nav-sep" style="flex:1"></span>
   ${links}
+</nav>`.trim();
+}
+
+/**
+ * 章ページ用のナビゲーション HTML を生成する。
+ * @param {object} currentChapter - 現在の章情報（CHAPTERS の要素）
+ * @returns {string} nav 要素の HTML
+ */
+function buildChapterNav(currentChapter) {
+  return `
+<nav class="site-nav" aria-label="サイトナビゲーション">
+  <a href="index.html" class="nav-home">赤い桜 — 本編</a>
+  <span class="nav-sep">/</span>
+  <span class="nav-current">${currentChapter.title}</span>
 </nav>`.trim();
 }
 
@@ -409,11 +446,46 @@ function buildDocPage(doc, bodyHtml) {
 }
 
 /**
+ * 章ページの完全な HTML を生成する。
+ * nav.js / nav.css を読み込んで既存ナビインフラ（TOC・章間ナビ・トップへ戻る）を活用する。
+ * @param {object} chapter - 章情報（CHAPTERS の要素）
+ * @param {string} bodyHtml - marked で変換済みの本文 HTML
+ * @returns {string}
+ */
+function buildChapterPage(chapter, bodyHtml) {
+  const nav = buildChapterNav(chapter);
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${chapter.title} — 赤い桜</title>
+  <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+  ${nav}
+  <main class="content" id="main-content">
+    ${bodyHtml}
+  </main>
+  <script src="nav.js"></script>
+</body>
+</html>`;
+}
+
+/**
  * 目次（index.html）の HTML を生成する。
  * @returns {string}
  */
 function buildIndexPage() {
-  const cards = DOCS.map((d) => `
+  // 章カード（本編）
+  const chapterCards = CHAPTERS.map((ch, i) => `
+    <a href="${ch.out}" class="card" aria-label="${ch.title}のページへ">
+      <div class="card-title">${ch.title}</div>
+      <div class="card-arrow">読む &rarr;</div>
+    </a>`).join('\n');
+
+  // 設定資料カード
+  const docCards = DOCS.map((d) => `
     <a href="${d.out}" class="card" aria-label="${d.title}のページへ">
       <div class="card-title">${d.title}</div>
       <div class="card-desc">${d.desc}</div>
@@ -437,8 +509,15 @@ function buildIndexPage() {
       <h1>赤い桜 — 世界設定資料集</h1>
       <p class="subtitle">カイザーライヒ世界の設定資料</p>
     </div>
+
+    <h2 class="section-heading">本編</h2>
     <div class="card-grid">
-      ${cards}
+      ${chapterCards}
+    </div>
+
+    <h2 class="section-heading" style="margin-top:2.5rem;">設定資料</h2>
+    <div class="card-grid">
+      ${docCards}
     </div>
   </main>
 </body>
@@ -463,7 +542,7 @@ function main() {
   fs.writeFileSync(indexOut, indexHtml, 'utf-8');
   console.log('生成: pages/index.html');
 
-  // 各ドキュメントページを生成
+  // 各ドキュメントページを生成（設定資料）
   for (const doc of DOCS) {
     const srcPath = path.join(ROOT, doc.src);
 
@@ -484,6 +563,29 @@ function main() {
     const outPath = path.join(PAGES_DIR, doc.out);
     fs.writeFileSync(outPath, html, 'utf-8');
     console.log(`生成: pages/${doc.out}`);
+  }
+
+  // 各章ページを生成（本編）
+  for (const chapter of CHAPTERS) {
+    const srcPath = path.join(ROOT, 'manuscript', chapter.src);
+
+    if (!fs.existsSync(srcPath)) {
+      console.warn(`警告: manuscript/${chapter.src} が見つかりません。スキップします。`);
+      continue;
+    }
+
+    const md = fs.readFileSync(srcPath, 'utf-8');
+
+    // marked でパース（GFM テーブルを有効化）
+    const bodyHtml = marked.parse(md, {
+      gfm: true,
+      breaks: false,
+    });
+
+    const html = buildChapterPage(chapter, bodyHtml);
+    const outPath = path.join(PAGES_DIR, chapter.out);
+    fs.writeFileSync(outPath, html, 'utf-8');
+    console.log(`生成: pages/${chapter.out}`);
   }
 
   console.log('\n全ページの生成が完了しました。');

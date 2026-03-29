@@ -15,11 +15,36 @@
   /* ------------------------------------------------------------------ */
   /* ページ順序の定義                                                     */
   /* ------------------------------------------------------------------ */
+
+  /** 設定資料ページの順序 */
   const PAGE_ORDER = [
     { file: 'world-setting.html',  label: '世界設定' },
     { file: 'japan-setting.html',  label: '日本設定' },
     { file: 'federation.html',     label: '連邦制度リファレンス' },
     { file: 'scenario.html',       label: 'シナリオ構成' },
+  ];
+
+  /** 本編章ページの順序 */
+  const CHAPTER_ORDER = [
+    { file: 'ch-prologue.html', label: 'プロローグ 予感' },
+    { file: 'ch-zero.html',     label: 'ゼロ章 信仰から計算へ' },
+    { file: 'ch-01.html',       label: '第一章 廃墟の設計図' },
+    { file: 'ch-02.html',       label: '第二章 彼女の名前' },
+    { file: 'ch-03.html',       label: '第三章 三つの衝撃' },
+    { file: 'ch-04.html',       label: '第四章 引き金' },
+    { file: 'ch-05.html',       label: '第五章 赤い雪' },
+    { file: 'ch-06.html',       label: '第六章 海の上の書庫' },
+    { file: 'ch-07.html',       label: '第七章 名簿' },
+    { file: 'ch-07b.html',      label: '第七章 東京' },
+    { file: 'ch-08.html',       label: '第八章 象徴' },
+    { file: 'ch-09.html',       label: '第九章 建国' },
+    { file: 'ch-10.html',       label: '第十章 道具' },
+    { file: 'ch-11.html',       label: '第十一章 金日成' },
+    { file: 'ch-12.html',       label: '第十二章 南' },
+    { file: 'ch-13.html',       label: '第十三章 解放' },
+    { file: 'ch-14.html',       label: '第十四章 署名' },
+    { file: 'ch-15.html',       label: '第十五章 帰還' },
+    { file: 'ch-final.html',    label: '終章' },
   ];
 
   /** 現在のファイル名を取得 */
@@ -226,13 +251,19 @@
   /* ------------------------------------------------------------------ */
   function buildTopChapterNav() {
     const file = currentFile();
-    const idx = PAGE_ORDER.findIndex(function (p) { return p.file === file; });
-    /* 対象外ページ（index.html など）はスキップ */
-    if (idx === -1) return;
 
-    const prev = PAGE_ORDER[idx - 1] || null;
-    const next = PAGE_ORDER[idx + 1] || null;
-    const current = PAGE_ORDER[idx];
+    /* 章ページか設定資料ページかを判定して適切な順序配列を使う */
+    let order = PAGE_ORDER;
+    let idx = PAGE_ORDER.findIndex(function (p) { return p.file === file; });
+    if (idx === -1) {
+      idx = CHAPTER_ORDER.findIndex(function (p) { return p.file === file; });
+      if (idx === -1) return; /* 対象外ページ（index.html など）はスキップ */
+      order = CHAPTER_ORDER;
+    }
+
+    const prev = order[idx - 1] || null;
+    const next = order[idx + 1] || null;
+    const current = order[idx];
 
     const nav = document.createElement('nav');
     nav.className = 'chapter-nav chapter-nav--top';
@@ -299,12 +330,18 @@
   /* ------------------------------------------------------------------ */
   function buildPageNavigation() {
     const file = currentFile();
-    const idx = PAGE_ORDER.findIndex(function (p) { return p.file === file; });
-    /* 対象外ページ（index.html など）はスキップ */
-    if (idx === -1) return;
 
-    const prev = PAGE_ORDER[idx - 1] || null;
-    const next = PAGE_ORDER[idx + 1] || null;
+    /* 章ページか設定資料ページかを判定して適切な順序配列を使う */
+    let order = PAGE_ORDER;
+    let idx = PAGE_ORDER.findIndex(function (p) { return p.file === file; });
+    if (idx === -1) {
+      idx = CHAPTER_ORDER.findIndex(function (p) { return p.file === file; });
+      if (idx === -1) return; /* 対象外ページ（index.html など）はスキップ */
+      order = CHAPTER_ORDER;
+    }
+
+    const prev = order[idx - 1] || null;
+    const next = order[idx + 1] || null;
 
     const nav = document.createElement('nav');
     nav.className = 'page-sibling-nav';

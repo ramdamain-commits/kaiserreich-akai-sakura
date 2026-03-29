@@ -623,6 +623,16 @@ h3:hover .heading-anchor {
   color: var(--accent);
 }
 
+/* ---- 目次ページ セクション見出し ---- */
+.section-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin: 2rem 0 0.5rem;
+}
+
 /* ---- カードメタ情報 ---- */
 .card-meta {
   display: flex;
