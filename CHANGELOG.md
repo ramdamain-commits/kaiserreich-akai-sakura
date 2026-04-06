@@ -22,7 +22,7 @@
 
 - 改稿計画は `revision-plan-5th.md` に移行
 - CLAUDE.md の参照先・紙モチーフ・.gitignore 記述を5稿対応に更新
-- GitHub Pages（`pages/`）は未更新。5稿安定後にビルド予定
+- GitHub Pages（`pages/`）は5稿+校正反映済み（2026-04-06）
 
 ## 2026-03-29
 
