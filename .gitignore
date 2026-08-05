@@ -8,6 +8,6 @@ manuscript/
 CLAUDE.md
 AGENTS.md
 review-codex.md
-revision-plan-3rd.md
+revision-plan-*.md
 .claudeignore
 .claude/
